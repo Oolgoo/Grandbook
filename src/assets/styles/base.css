@@ -1,0 +1,19 @@
+html,
+body {
+  line-height: 120%;
+  @apply bg-white h-full;
+}
+
+a {
+  display: inline-block;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+
+
+

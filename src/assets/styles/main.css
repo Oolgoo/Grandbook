@@ -1,0 +1,56 @@
+@tailwind base;
+@import "./base.css";
+
+@layer base {
+  h1 {
+    @apply text-[4rem] md:text-[8.333vw] lg:text-[7.5rem] 2xl:text-[8.333vw] leading-[120%] font-normal text-graphite;
+  }
+  h2 {
+    @apply text-[3rem] md:text-[6.250vw] lg:text-[5.25rem] 2xl:text-[5.833vw] leading-[120%] font-normal text-graphite;
+  }
+
+  h3 {
+    @apply text-[2rem] md:text-[4.167vw] lg:text-[4rem] 2xl:text-[4.444vw] leading-[120%] font-normal text-graphite;
+  }
+
+  h4 {
+    @apply text-[1.5rem] md:text-[3.125vw] lg:text-[2rem] 2xl:text-[2.222vw] leading-[120%] font-normal text-graphite;
+  }
+  h5 {
+    @apply text-[1.125rem] md:text-[2.344vw] lg:text-[1.5rem] 2xl:text-[1.667vw] leading-[120%] font-normal text-graphite;
+  }
+  h6 {
+    @apply text-[16px] md:text-[2.083vw] lg:text-[18px] 2xl:text-[1.250vw] leading-[130%] font-normal text-red;
+  }
+  p {
+    @apply text-body-text-lg lg:text-body-text-lg 2xl:text-body-large-2xl text-graphite font-normal tracking-wider !leading-[160%];
+  }
+  .body-large {
+    @apply text-[12px] leading-[140%] lg:text-[14px] 2xl:text-[0.972vw] tracking-wider text-graphite;
+  }
+}
+
+
+/* @import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+* {
+  /* font-family: 'PT Sans', sans-serif; */
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+}
+
+
+@tailwind components;
+@import "./components.css";
+@tailwind utilities;
+
+
+.input-var::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+.input-var::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+

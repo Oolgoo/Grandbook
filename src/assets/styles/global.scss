@@ -1,0 +1,119 @@
+.mainHeader {
+    .burger-menu-btn {
+        pointer-events: all;
+
+        @media screen and (min-width: 1024px) {
+            @keyframes menuIcon {
+                0% {
+                    width: 38px;
+                }
+                50% {
+                    width: 24px;
+                    right: 0;
+                }
+                80% {
+                    width: 38px;
+                    right: 0;
+                }
+            }
+        }
+
+        &::before {
+            content: "";
+        }
+        &::after {
+            content: "";
+        }
+        &.is--inactive {
+            background: 0 0;
+            &::before {
+                transform: translateX(-50%) translateY(-4px);
+            }
+            &::after {
+                transform: translateX(-50%) translateY(2px);
+                animation: menuIcon 5s ease 2s infinite;
+            }
+        }
+    }
+}
+
+//Header Main SCSS
+
+.header-pop-menu {
+    .side-drawer {
+        &.open {
+            .internal-nav-links {
+                li {
+                    opacity: 1;
+                    transform: translate(0);
+                    transition-duration: 1s;
+                    // transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+                }
+                @for $i from 0 through 14 {
+                    li:nth-child(#{$i + 1}n) {
+                        transition-delay: #{$i/15 + 0.1}s;
+                    }
+                }
+            }
+            .external-nav-links {
+                @for $i from 0 through 4 {
+                    li:nth-child(#{$i + 1}n) {
+                        a {
+                            transition-delay: #{$i/10 + 0.8}s;
+                        }
+                    }
+                }
+                li {
+                    a {
+                        transform: translate(0);
+                        transition-duration: 1s;
+                        transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+                    }
+                }
+            }
+        }
+
+        .internal-nav-links {
+            li {
+                transform: translateX(-10%);
+                opacity: 0;
+                will-change: transform;
+                // transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            }
+        }
+        .external-nav-links {
+            li {
+                a {
+                    transform: translate(-100%);
+                    will-change: transform;
+                    transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+                }
+            }
+        }
+    }
+}
+
+.mng-post {
+    position: relative;
+    display: block;
+    min-height: 100%;
+    transform: rotate(90deg) translateY(-100%);
+    transform-origin: left top;
+}
+
+.mng-section {
+    p {
+        font-family: MongolianBaiti;
+    }
+}
+
+.mng-box {
+    max-height: 100vh;
+    -webkit-writing-mode: vertical-lr;
+    /* writing-mode: vertical-lr; */
+    -webkit-text-orientation: sideways-right;
+    text-orientation: sideways-right;
+    /* font-feature-settings: "cv01"; */
+    font-family: Baiti, MongolScript, serif;
+    width: 362px;
+}
