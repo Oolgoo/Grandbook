@@ -1,0 +1,621 @@
+<!doctype html><html lang="mn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px/1.4 system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>TOPIK 54 бичих бэлтгэл</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: exam-booklet column — memorize templates, guide, expression bank, topic picker, prompt + lined paper with a 600–700 counter, feedback sheet. */
+:root{
+  /* calm reading palette: soft white, near-black, one red accent */
+  --paper:#f7f7f5; --sheet:#ffffff; --ink:#1e1e1e; --muted:#636363; --rule:#e3e3e0; --box:#f3f3f1;
+  --omr:#c0392b; --omr-soft:#fbecea; --good:#1e1e1e; --good-soft:#efefec; --warn:#b03026; --warn-soft:#f3f3f1; --bad:#b03026; --bad-soft:#fbecea;
+  --s1:#1e1e1e; --s2:#c0392b; --s3:#8d8d8d; --s4:#c9c9c6; --s5:#e59a92; --s6:#555555;
+  --f-word:"Gowun Batang","Noto Serif KR",serif;
+  --f-body:"Noto Sans KR",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#141414; --sheet:#1c1c1c; --ink:#e8e8e6; --muted:#a3a3a0; --rule:#2f2f2f; --box:#232323;
+  --omr:#ec6b5e; --omr-soft:#3a201d; --good:#e8e8e6; --good-soft:#262626; --warn:#ec6b5e; --warn-soft:#242424; --bad:#ec6b5e; --bad-soft:#3a201d;
+  --s1:#e8e8e6; --s2:#ec6b5e; --s3:#8a8a88; --s4:#565654; --s5:#f2a99f; --s6:#bdbdbb; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#141414; --sheet:#1c1c1c; --ink:#e8e8e6; --muted:#a3a3a0; --rule:#2f2f2f; --box:#232323;
+  --omr:#ec6b5e; --omr-soft:#3a201d; --good:#e8e8e6; --good-soft:#262626; --warn:#ec6b5e; --warn-soft:#242424; --bad:#ec6b5e; --bad-soft:#3a201d;
+  --s1:#e8e8e6; --s2:#ec6b5e; --s3:#8a8a88; --s4:#565654; --s5:#f2a99f; --s6:#bdbdbb; color-scheme:dark}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
+.wrap{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+header{display:flex;flex-direction:column;gap:4px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--omr)}
+h1{font-family:var(--f-word);font-size:clamp(26px,6vw,36px);line-height:1.2;margin:0;text-wrap:balance}
+h2{font-family:var(--f-word);font-size:22px;margin:0;line-height:1.3;text-wrap:balance;word-break:keep-all}
+h3{font-size:14px;margin:0;color:var(--muted);letter-spacing:.04em}
+.sub{color:var(--muted);margin:0;font-size:15px;max-width:65ch}
+.sheet{background:var(--sheet);border:1px solid var(--rule);border-radius:10px;padding:22px clamp(16px,4vw,28px);display:flex;flex-direction:column;gap:16px;min-width:0}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.between{justify-content:space-between}
+.note{font-size:13px;color:var(--muted)}
+.label{font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--muted)}
+:focus-visible{outline:2px solid var(--omr);outline-offset:2px}
+.btn{appearance:none;border:0;background:var(--ink);color:var(--sheet);font:inherit;font-weight:700;padding:11px 18px;border-radius:8px;cursor:pointer;font-size:15px}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--rule)}
+.btn.small{padding:7px 12px;font-size:14px}
+.btn:disabled{opacity:.4;cursor:default}
+.inp{font:inherit;padding:9px 12px;border:1px solid var(--rule);border-radius:8px;background:var(--sheet);color:var(--ink);min-width:0;max-width:100%;box-sizing:border-box}
+.inp.err{border-color:var(--bad);background:var(--bad-soft)}
+/* memorize templates */
+.slot{color:var(--omr);font-weight:700;background:var(--omr-soft);border-radius:4px;padding:0 4px;white-space:nowrap}
+.fill{border-bottom:2px solid var(--omr);font-weight:700}
+.tplgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:820px){.tplgrid{grid-template-columns:1fr}}
+.tcard{border:1px solid var(--rule);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:10px;min-width:0;background:var(--sheet)}
+.tcard .th{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.tcard .tn{font-weight:700;font-size:15px}
+.tcard .tu{font-size:12.5px;color:var(--muted)}
+.tcard .fr{font-size:16.5px;line-height:1.95;word-break:keep-all;overflow-wrap:anywhere;padding:10px 12px;background:var(--box);border-radius:8px;cursor:default;transition:filter .2s ease}
+.tcard .mn{font-size:13.5px;color:var(--muted)}
+.tcard .ex{font-size:14.5px;line-height:1.85;word-break:keep-all;overflow-wrap:anywhere}
+.tcard .ex::before{content:"Жишээ: ";font-size:12px;font-weight:700;color:var(--muted)}
+.tcard .cbtn{align-self:flex-start;appearance:none;font:inherit;font-size:13px;font-weight:700;border:1px solid var(--rule);background:transparent;color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer}
+.tcard .cbtn:hover{border-color:var(--omr)}
+#tpl.quiz .tcard .fr{filter:blur(6px);cursor:pointer;user-select:none}
+#tpl.quiz .tcard .fr.show{filter:none}
+#tpl.quiz .tcard .ex{display:none}
+#tplQuiz[aria-pressed="true"]{background:var(--ink);color:var(--sheet);border-color:var(--ink)}
+details.tplcombo>summary{cursor:pointer;font-weight:700;font-size:15px}
+.combo{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.combo .seg{grid-template-columns:7em minmax(0,1fr)}
+/* expression bank */
+details.bank>summary{cursor:pointer;font-weight:700}
+.bankgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin-top:14px}
+.bankbox{border:1px solid var(--rule);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.bankbox ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px}
+.bankbox li{font-size:14px;overflow-wrap:anywhere}
+.bankbox li b{font-weight:700}
+.bankbox li span{color:var(--muted);font-size:13px}
+/* picker */
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tab{appearance:none;border:1px solid var(--rule);background:transparent;color:var(--ink);font:inherit;font-size:14px;padding:7px 14px;border-radius:999px;cursor:pointer}
+.tab[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--sheet)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px}
+.qbtn{appearance:none;text-align:left;border:1px solid var(--rule);background:var(--sheet);color:var(--ink);font:inherit;border-radius:8px;padding:8px 10px;cursor:pointer;display:flex;flex-direction:column;gap:2px;min-width:0}
+.qbtn:hover{border-color:var(--omr)}
+.qbtn[aria-current="true"]{border-color:var(--omr);box-shadow:inset 0 0 0 1px var(--omr)}
+.qbtn .k{font-family:var(--f-mono);font-size:11px;color:var(--muted);display:flex;justify-content:space-between;gap:6px}
+.qbtn .t{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qbtn .st{color:var(--good);font-weight:700}
+.qbtn .st.wip{color:var(--warn)}
+.namerow{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 12px;align-items:center}
+.namerow .note{grid-column:1/-1}
+/* question */
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;background:var(--omr-soft);color:var(--omr)}
+.tag.g{background:var(--box);color:var(--muted);border:1px solid var(--rule)}
+.inst{font-size:15px;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.inst b{color:var(--omr)}
+.fig{border:1px solid var(--rule);border-radius:14px;padding:16px;background:var(--box);display:flex;flex-direction:column;gap:12px}
+.fig .meta{font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 16px}
+.panels{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.panel{background:var(--sheet);border:1px solid var(--rule);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.panel .pt{font-weight:700;font-size:14px;text-align:center;word-break:keep-all}
+.hb{display:grid;grid-template-columns:minmax(0,7.5em) minmax(0,1fr) 3.4em;gap:6px 8px;align-items:center;font-size:13px}
+.hb .l{word-break:keep-all;overflow-wrap:anywhere;line-height:1.3}
+.hb .tr{height:14px;background:var(--box);border-radius:3px;overflow:hidden}
+.hb .tr i{display:block;height:100%;background:var(--s1);border-radius:3px}
+.hb .v{font-family:var(--f-mono);font-size:12px;text-align:right}
+.gb{display:flex;flex-direction:column;gap:9px;font-size:13px}
+.gb .cat{font-weight:500;word-break:keep-all}
+.gb .bars{display:flex;flex-direction:column;gap:3px}
+.gb .b{display:grid;grid-template-columns:minmax(0,1fr) 3.4em;gap:8px;align-items:center}
+.gb .b i{display:block;height:12px;border-radius:3px}
+.gb .b span{font-family:var(--f-mono);font-size:12px;text-align:right}
+.legend{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:12.5px;justify-content:center}
+.legend span{display:inline-flex;gap:5px;align-items:center}
+.legend i{width:11px;height:11px;border-radius:2px;display:inline-block}
+.pie{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px;align-items:center}
+.pie svg{width:110px;height:110px}
+.pie ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px;font-size:13px}
+.pie li{display:grid;grid-template-columns:12px minmax(0,1fr) auto;gap:6px;align-items:center}
+.pie li i{width:11px;height:11px;border-radius:2px}
+.pie li b{font-family:var(--f-mono);font-weight:500;font-size:12px}
+.line svg{width:100%;height:auto;display:block}
+.plist{margin:0;padding-left:1.1em;font-size:14px;display:flex;flex-direction:column;gap:3px}
+.ptab{border-collapse:collapse;width:100%;font-size:13.5px}
+.ptab th,.ptab td{border:1px solid var(--rule);padding:6px 8px;text-align:center;word-break:keep-all;vertical-align:middle}
+.ptab th{background:var(--box);font-weight:700}
+/* writing paper */
+.paperwrap{display:flex;flex-direction:column;gap:8px}
+textarea.paper{font:inherit;font-size:18px;line-height:2.1;letter-spacing:.01em;width:100%;box-sizing:border-box;min-height:300px;resize:vertical;border:1px solid var(--rule);border-radius:10px;padding:6px 14px;color:var(--ink);
+  background-color:var(--sheet);background-image:repeating-linear-gradient(to bottom,transparent 0,transparent calc(2.1em - 1px),var(--rule) calc(2.1em - 1px),var(--rule) 2.1em);background-attachment:local;background-position:0 6px}
+textarea.paper:focus{outline:none;border-color:var(--ink)}
+.meter{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center}
+.mtrack{position:relative;height:10px;background:var(--box);border:1px solid var(--rule);border-radius:6px;overflow:hidden}
+.mtrack i{position:absolute;inset:0 auto 0 0;background:var(--s3);border-radius:6px}
+.mtrack i.ok{background:var(--ink)}
+.mtrack i.over{background:var(--omr)}
+.mtrack::after{content:"";position:absolute;left:66.6%;top:0;bottom:0;border-left:2px dashed var(--muted)}
+.mcount{font-family:var(--f-mono);font-size:13px;font-variant-numeric:tabular-nums}
+.tipzone{display:flex;flex-direction:column;gap:10px}
+.tiplist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.tiplist li{background:var(--box);border-left:3px solid var(--omr);border-radius:4px 8px 8px 4px;padding:10px 14px;font-size:15px;overflow-wrap:anywhere}
+.tiplist li b{color:var(--warn)}
+.tiplist .ko{font-family:var(--f-body);font-weight:500}
+/* feedback */
+.chk{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.chk li{font-size:14px;padding:6px 10px;border-radius:6px}
+.chk li.warn{background:var(--box);color:var(--ink);border-left:3px solid var(--omr)}
+.chk li.ok{background:var(--good-soft);color:var(--good)}
+.chk li.bad{background:var(--bad-soft);color:var(--bad)}
+.model{display:flex;flex-direction:column;gap:8px}
+.seg{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:10px;align-items:baseline;padding:8px 10px;border-radius:8px;background:var(--good-soft)}
+.seg .sl{font-size:12px;font-weight:700;color:var(--omr)}
+.seg .st{font-size:16px;line-height:1.85;overflow-wrap:anywhere}
+.uses{display:flex;flex-wrap:wrap;gap:6px}
+.use{display:inline-flex;gap:6px;align-items:baseline;border:1px solid var(--rule);border-radius:8px;padding:4px 10px;font-size:14px;background:var(--sheet)}
+.use span{color:var(--muted);font-size:13px}
+.self{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.selfbtn{appearance:none;font:inherit;font-size:13px;border:1px solid var(--rule);background:transparent;color:var(--ink);padding:5px 10px;border-radius:999px;cursor:pointer}
+.selfbtn[aria-pressed="true"].y{background:var(--good);border-color:var(--good);color:var(--sheet)}
+.selfbtn[aria-pressed="true"].n{background:var(--warn);border-color:var(--warn);color:var(--sheet)}
+.mine{white-space:pre-wrap;background:var(--box);border:1px solid var(--rule);border-radius:8px;padding:10px 12px;font-size:15px;overflow-wrap:anywhere}
+.sendtxt{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font-family:var(--f-body);font-size:14px;background:var(--box);border:1px solid var(--rule);padding:12px;border-radius:8px;max-height:320px;overflow:auto}
+.saved{color:var(--good);font-weight:700}
+.tbl{overflow-x:auto}
+table.t{border-collapse:collapse;width:100%;font-size:14px}
+table.t th{text-align:left;font-size:12px;color:var(--muted);font-weight:700;padding:6px 8px;border-bottom:1px solid var(--rule);white-space:nowrap}
+table.t td{padding:8px;border-bottom:1px solid var(--rule);vertical-align:top;overflow-wrap:anywhere}
+.slist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.slist li{display:flex;flex-direction:column;gap:4px;padding:10px 0;border-top:1px solid var(--rule)}
+.slist .nm{font-weight:700}
+.slist .tx{white-space:pre-wrap;font-size:15px;overflow-wrap:anywhere}
+@media (prefers-reduced-motion:no-preference){#fbcard:not([hidden]){animation:rise .25s ease-out}}
+@keyframes rise{from{transform:translateY(6px);opacity:.6}to{transform:none;opacity:1}}
+
+/* 54 additions */
+.prompt{border:1px solid var(--rule);border-radius:12px;background:var(--box);padding:16px 18px;display:flex;flex-direction:column;gap:10px}
+.prompt p{margin:0;font-size:16px;line-height:1.85;word-break:keep-all;overflow-wrap:anywhere}
+.qlist{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:4px;font-size:15.5px;font-weight:500;word-break:keep-all}
+.qlist li::marker{color:var(--omr)}
+textarea.paper.tall{min-height:540px}
+.mtrack.m54::after{left:85.7%}
+.guide{display:flex;flex-direction:column;gap:14px;margin-top:14px}
+.gfacts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:560px){.gfacts{grid-template-columns:1fr}}
+.gfacts div{border:1px solid var(--rule);border-radius:10px;padding:10px 14px;display:flex;flex-direction:column}
+.gfacts b{font-size:20px;color:var(--omr)}
+.gfacts span{font-size:13px;color:var(--muted)}
+.gtab td:first-child{white-space:nowrap}
+.grules{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;font-size:15px;max-width:70ch}
+.grules b{color:var(--omr)}
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">TOPIK II · 쓰기 54 · бэлтгэл</span>
+    <h1>Бичих бэлтгэл: санал бодлын эссэ</h1>
+    <p class="sub">600–700 үсэгтэй (띄어쓰기 포함) өөрийн бодлоо илэрхийлсэн эссэ бичнэ. Эхлээд загвар өгүүлбэрүүдийг цээжилж, дараа нь сэдэв сонгоод бие даан бичээрэй. Гацвал «Тип авах», бичиж дуусаад «Хариулт харах» дарж жишээ эссэ, хэллэг, анхаарах зүйлсийг харна.</p>
+  </header>
+
+  <!-- TEMPLATES -->
+  <section class="sheet" id="tpl">
+    <div class="row between">
+      <div><span class="eyebrow">Заавал цээжлэх</span><h2 style="margin-top:4px">Загвар өгүүлбэр: 3 эхлэл · 3 гол хэсэг · 3 дүгнэлт</h2></div>
+      <button class="btn ghost small" id="tplQuiz" type="button" aria-pressed="false">Цээжилснээ шалгах</button>
+    </div>
+    <p class="sub">Эдгээрийг цээжилчихвэл ямар ч сэдэв гарсан <span class="slot">улаан</span> хэсгийг нь сэдвийн үгээр сольж бичихэд л болно. Асуултын төрлөөс хамаарч аль загварыг ашиглахаа сонго.</p>
+    <div class="tabs" id="tplTabs" role="tablist"></div>
+    <div class="tplgrid" id="tplCards"></div>
+    <details class="tplcombo">
+      <summary>Загваруудыг нийлүүлбэл: эссэний араг яс (목표)</summary>
+      <div class="combo" id="tplCombo"></div>
+    </details>
+  </section>
+
+  <!-- GUIDE -->
+  <section class="sheet">
+    <details class="bank" open>
+      <summary>54-ийг хэрхэн бичих вэ</summary>
+      <div class="guide">
+        <div class="gfacts">
+          <div><b>600–700자</b><span>хоосон зай тоологдоно</span></div>
+          <div><b>50 оноо</b><span>хамгийн өндөр оноотой</span></div>
+          <div><b>≈ 50 мин</b><span>5 төлөвлөх · 40 бичих · 5 шалгах</span></div>
+        </div>
+        <div class="tbl"><table class="t gtab">
+          <thead><tr><th>Хэсэг</th><th>Урт</th><th>Юу бичих</th></tr></thead>
+          <tbody>
+            <tr><td><b>서론</b> эхлэл</td><td>≈ 150자</td><td>Сэдвийг танилцуулах (нөхцөл байдал, тодорхойлолт, зүйр үг). Ихэвчлэн 1-р асуултын хариулт эндээс эхэлнэ.</td></tr>
+            <tr><td><b>본론</b> гол хэсэг</td><td>≈ 350자</td><td>1, 2-р асуулт: шалтгаан, асуудал, жишээ. 첫째/둘째, 게다가, 반면 зэргээр дараалуулна. 1–2 догол мөр.</td></tr>
+            <tr><td><b>결론</b> дүгнэлт</td><td>≈ 150자</td><td>3-р асуулт: шийдэл, өөрийн байр суурь. 따라서, 결론적으로-оор эхэлнэ.</td></tr>
+          </tbody>
+        </table></div>
+        <ul class="grules">
+          <li><b>-다</b> хэлбэрээр бичнэ. -요, -습니다 ✗</li>
+          <li>Асуултын текстийг <b>яг хуулж бичихгүй</b> (문제를 그대로 옮겨 쓰지 마시오). Өөрийн үгээр сольж бич.</li>
+          <li>Гурван асуултад <b>бүгдэд нь</b> хариулна. Нэг нь дутвал оноо их хасагдана.</li>
+          <li>Өөрийгөө «저는» биш <b>«나는»</b> гэж бичнэ, эсвэл ерөнхийд нь бичнэ.</li>
+          <li>Ярианы үг ✗: 너무 → 매우, 진짜 → 실제로, 근데 → 그런데/그러나.</li>
+          <li>Догол мөр бүрийг шинэ мөрөөс эхэлнэ. 3–4 догол мөр байхад хамгийн тохиромжтой.</li>
+          <li>Үнэлгээ: <b>агуулга ба даалгавар 12 · бүтэц 12 · хэлний хэрэглээ 26</b>. Дүрэм, үгийн сан хамгийн их оноотой.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- EXPRESSION BANK -->
+  <section class="sheet">
+    <details class="bank">
+      <summary>54-т хэрэглэх хэллэгийн сан</summary>
+      <div class="bankgrid" id="bank"></div>
+    </details>
+  </section>
+
+  <!-- PICKER -->
+  <section class="sheet">
+    <div class="namerow">
+      <label class="label" for="stuName">Таны нэр</label>
+      <input id="stuName" class="inp" type="text" maxlength="40" placeholder="Жишээ нь: Бат-Эрдэнэ" autocomplete="name">
+      <span class="note" id="nameNote">Багш таны бичсэнийг харахын тулд нэрээ бичнэ үү.</span>
+    </div>
+    <div class="row between"><div class="tabs" id="tabs"></div><span class="note" id="progress"></span></div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <!-- QUESTION -->
+  <section class="sheet" id="qcard">
+    <div class="row between"><div class="tags" id="qtags"></div><span class="note" id="qpos"></span></div>
+    <h2 id="qtitle"></h2>
+    <p class="inst">※ 다음을 주제로 하여 자신의 생각을 <b>600~700자</b>로 글을 쓰십시오. 단, 문제를 그대로 옮겨 쓰지 마십시오. (50점)</p>
+    <div class="prompt" id="prompt"></div>
+    <div class="tipzone">
+      <div class="row"><button class="btn ghost small" id="tipBtn" type="button">Тип авах</button><span class="note" id="tipNote"></span></div>
+      <ul class="tiplist" id="tipList" hidden></ul>
+    </div>
+    <div class="paperwrap">
+      <label class="label" for="ans">Эссэгээ энд бичнэ үү (догол мөр бүрийг шинэ мөрөөс)</label>
+      <textarea id="ans" class="paper tall" lang="ko" spellcheck="false" placeholder="최근 ..."></textarea>
+      <div class="meter"><div class="mtrack m54"><i id="mfill"></i></div><span class="mcount" id="mcount">0 / 600–700자</span></div>
+    </div>
+    <div class="row">
+      <button class="btn" id="checkBtn" type="button">Хариулт харах</button>
+      <button class="btn ghost" id="clearBtn" type="button">Арилгах</button>
+      <span style="flex:1"></span>
+      <button class="btn ghost small" id="prevBtn" type="button">← Өмнөх</button>
+      <button class="btn ghost small" id="nextBtn" type="button">Дараах →</button>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section class="sheet" id="fbcard" hidden>
+    <div class="row between"><h2>Хариулт ба тайлбар</h2><span class="note">Жишээ эссэтэй адил байх шаардлагагүй. Гурван асуултад бүгдэд нь хариулж, бүтэц, хэллэг зөв бол болно.</span></div>
+    <h3>Таны бичсэн</h3>
+    <div class="mine" id="mine"></div>
+    <ul class="chk" id="chk"></ul>
+    <h3 id="modelH">Жишээ эссэ</h3>
+    <div class="model" id="model"></div>
+    <h3>Энэ сэдвийн гол үгс</h3>
+    <div class="uses" id="uses"></div>
+    <div class="self"><span class="note">Өөрийгөө үнэл:</span><button type="button" class="selfbtn y" id="selfY">✓ Сайн бичсэн</button><button type="button" class="selfbtn n" id="selfN">✎ Дахин бичье</button></div>
+  </section>
+
+  <section class="sheet" id="tqCard" hidden>
+    <div class="row between"><span class="eyebrow">Багшийн хэсэг · зөвхөн танд харагдана</span><span class="note" id="tqCount"></span></div>
+    <h2>Энэ сэдэвт шавь нарын бичсэн</h2>
+    <ul class="slist" id="tqList"></ul>
+  </section>
+
+  <section class="sheet" id="teacher" hidden>
+    <div class="row between"><span class="eyebrow">Багшийн хэсэг · зөвхөн танд харагдана</span><span class="note" id="tState">Ачаалж байна…</span></div>
+    <h2>Шавь нарын бичсэн</h2>
+    <div class="row"><label class="label" for="tStudent">Шавь сонгох</label><select id="tStudent" class="inp"></select></div>
+    <div class="tbl"><table class="t"><thead><tr><th>Сэдэв</th><th>Үсэг</th><th>Бичсэн</th><th>Үнэлгээ</th></tr></thead><tbody id="tBody"></tbody></table></div>
+  </section>
+
+  <section class="sheet" id="sendCard">
+    <div class="row between"><h2>Бичсэнээ багшид илгээх</h2><span class="note" id="sendState"></span></div>
+    <p class="note" id="sendNote" style="margin:0">«Хариулт харах» дарсан сэдвүүдийн эссэ энд цугларна. Доорх текстийг хуулж багшдаа илгээнэ үү.</p>
+    <pre class="sendtxt" id="sendText"></pre>
+    <div class="row"><button class="btn ghost small" id="copyBtn" type="button">Хуулах</button><span class="note" id="copyMsg" aria-live="polite"></span></div>
+  </section>
+</div>
+
+<script>
+(function(){
+"use strict";
+/* ================= Templates (3 × 3) =================
+   {…} = солих хэсэг, […] = жишээнд сольсон хэсэг */
+const TPL={
+ intro:{name:"Эхлэл",items:[
+  {n:"① Нөхцөл байдлаас эхлэх",u:"Ихэнх сэдэвт тохирно",fr:"최근 {сэдэв}에 대한 관심이 높아지고 있다. {нөхцөл байдал}. 그렇다면 {асуулт}?",mn:"Сүүлийн үед …-д анхаарал нэмэгдэж байна. … Тэгвэл …?",ex:"최근 [외모]에 대한 관심이 높아지고 있다. [취업이나 연애에서 외모가 중요한 기준이 되고 있다]. 그렇다면 [외모는 우리에게 어떤 영향을 줄까]?"},
+  {n:"② Тодорхойлолтоор эхлэх",u:"Ойлголт, үзэл баримтлалын сэдэв",fr:"{сэдэв}(이)란 {тодорхойлолт}을/를 말한다. 우리는 살아가면서 {жишээ}.",mn:"… гэдэг нь …-ыг хэлнэ. Бид амьдралдаа …",ex:"[협업]이란 [다른 사람들과 함께 하나의 목표를 위해 일하는 것]을 말한다. 우리는 살아가면서 [회사나 학교에서 여러 사람과 함께 일하게 된다]."},
+  {n:"③ Байр сууриа илэрхийлэх",u:"Санал зөрөлдөөнтэй (찬반) сэдэв",fr:"{сэдэв}에 대해서는 찬반 의견이 팽팽하게 맞서고 있다. {эсрэг санаа}다는 의견도 있지만, 나는 {сэдэв}에 {찬성/반대}하는 입장이다.",mn:"…-ын талаар дэмжих, эсэргүүцэх санаа тэнцүү байна. … гэсэн санаа байгаа ч би …-г дэмжиж (эсэргүүцэж) байна.",ex:"[교사의 체벌]에 대해서는 찬반 의견이 팽팽하게 맞서고 있다. [체벌이 학생 지도에 필요하]다는 의견도 있지만, 나는 [체벌]에 [반대]하는 입장이다."}]},
+ body:{name:"Гол хэсэг",items:[
+  {n:"① Шалтгаан жагсаах",u:"«왜 중요한가?», «이유는?» асуулт",fr:"{сэдэв}이/가 중요한 이유는 다음과 같다. 첫째, {шалтгаан 1}기 때문이다. 둘째, {шалтгаан 2}.",mn:"… чухал байгаагийн шалтгаан нь: нэгдүгээрт, … учраас. Хоёрдугаарт, …",ex:"[시간 관리]가 중요한 이유는 다음과 같다. 첫째, [시간은 한번 지나가면 다시 돌아오지 않]기 때문이다. 둘째, [시간을 잘 관리하면 일의 결과도 좋아진다]."},
+  {n:"② Асуудлыг харуулах",u:"«문제점은?», «부정적인 측면은?» асуулт",fr:"그러나 {сэдэв}에는 문제점도 있다. {асуудал 1}(으)로 인해 {үр дагавар}. 게다가 {асуудал 2}.",mn:"Гэвч …-д бас асуудал бий. …-ын улмаас … Түүнээс гадна …",ex:"그러나 [도시 개발]에는 문제점도 있다. [집값 상승]으로 인해 [원래 살던 주민들이 지역을 떠나게 된다]. 게다가 [지역의 고유한 특징이 사라진다]."},
+  {n:"③ Жишээгээр батлах",u:"Аль ч догол мөрт нэмж болно",fr:"예를 들어 {жишээ}. 이처럼 {дүгнэлт}.",mn:"Жишээ нь … Ийнхүү …",ex:"예를 들어 [힘든 시기에 듣는 따뜻한 격려의 말은 다시 일어설 용기를 준다]. 이처럼 [말 한마디가 사람의 삶을 바꾸기도 한다]."}]},
+ end:{name:"Дүгнэлт",items:[
+  {n:"① Шийдэл санал болгох",u:"«해결 방법은?», «어떻게 해야 하는가?»",fr:"따라서 {зорилго}기 위해서는 {арга 1}아/어야 한다. 또한 {арга 2}도 필요하다.",mn:"Тиймээс …-ын тулд … хэрэгтэй. Мөн … бас шаардлагатай.",ex:"따라서 [층간 소음 문제를 해결하]기 위해서는 [건물의 바닥 기준을 강화해]야 한다. 또한 [이웃을 배려하는 생활 습관]도 필요하다."},
+  {n:"② Байр сууриа давтах",u:"Санал зөрөлдөөнтэй (찬반) сэдэв",fr:"결론적으로 나는 {байр суурь}다고 생각한다. {гол шалтгаан}기 때문이다.",mn:"Дүгнэж хэлэхэд би … гэж бодож байна. Учир нь …",ex:"결론적으로 나는 [교사의 체벌이 필요하지 않]다고 생각한다. [교육의 목적은 학생이 바르게 성장하도록 돕는 것이]기 때문이다."},
+  {n:"③ Хамтын хүчин чармайлт",u:"Нийгмийн асуудлын сэдэв",fr:"{сэдэв}은/는 개인뿐만 아니라 사회 전체가 함께 노력해야 할 문제이다. 우리 모두가 {үйлдэл}다면 {эерэг үр дүн} 것이다.",mn:"… нь хувь хүн төдийгүй нийгэм бүхэлдээ хамтдаа хичээх асуудал. Бид бүгд … бол … болно.",ex:"[고령화]는 개인뿐만 아니라 사회 전체가 함께 노력해야 할 문제이다. 우리 모두가 [미리 준비하고 서로 돕는]다면 [행복한 노후를 맞이할 수 있을] 것이다."}]}
+};
+const COMBO=[["서론 · Эхлэл ②","목표란 우리가 이루고 싶은 일을 분명하게 정한 것을 말한다. 우리는 살아가면서 크고 작은 목표를 세운다."],["본론 · Гол хэсэг ①","목표가 중요한 이유는 다음과 같다. 첫째, 무엇을 먼저 해야 할지 알려 주기 때문이다. 둘째, 목표를 이루어 가는 과정에서 자신감을 얻을 수 있다."],["본론 · Гол хэсэг ②","그러나 목표 없이 살면 문제가 생긴다. 해야 할 일이 분명하지 않아 쉽게 포기하게 된다. 게다가 시간을 의미 없이 보내기 쉽다."],["결론 · Дүгнэлт ①","따라서 목표를 이루기 위해서는 구체적인 계획을 세워야 한다. 또한 실패해도 포기하지 않는 끈기도 필요하다."]];
+
+/* ================= Expression bank ================= */
+const BANK=[
+ ["서론 · эхлэл",[["최근 ~에 대한 관심이 높아지고 있다","сүүлийн үед …-д анхаарал нэмэгдэж байна"],["'~'(이)라는 말이 있다","… гэсэн үг (зүйр үг) байдаг"],["~(이)란 ~을/를 말한다","… гэдэг нь …-ыг хэлнэ"],["그렇다면 ~(으)ㄹ까?","тэгвэл … вэ?"]]],
+ ["Нотолгоо жагсаах",[["첫째 / 둘째 / 셋째","нэгдүгээрт / хоёрдугаарт / гуравдугаарт"],["먼저 / 다음으로 / 마지막으로","эхлээд / дараа нь / эцэст нь"],["뿐만 아니라 / 게다가","төдийгүй / түүнээс гадна"],["무엇보다","юуны түрүүнд"]]],
+ ["Эсрэг тал · буулт",[["그러나 / 하지만","гэвч"],["반면(에)","харин, эсрэгээрээ"],["물론 ~지만","мэдээж … боловч"],["~(으)ㄴ/는 반면","…-ын зэрэгцээ, харин"]]],
+ ["Жишээ",[["예를 들어","жишээ нь"],["실제로","бодит байдал дээр"],["~이/가 대표적이다","…-ыг төлөөлөх жишээ"]]],
+ ["Шалтгаан · үр дагавар",[["~기 때문이다","… учраас"],["~(으)로 인해","…-ын улмаас"],["그 결과","үүний үр дүнд"],["~(으)ㄹ 수밖에 없다","…-аас өөр аргагүй"]]],
+ ["결론 · дүгнэлт",[["따라서 / 그러므로","тиймээс"],["결론적으로","дүгнэж хэлэхэд"],["~아/어야 할 것이다","… хэрэгтэй болно"],["~는 것이 바람직하다","… нь зүйтэй"]]],
+ ["Ахисан түвшний хэллэг (4–6급)",[["~기 마련이다","аяндаа … болдог"],["~는 데 그치지 않고","…-аар зогсохгүй"],["~(으)ㄹ 필요가 있다","… шаардлагатай"],["~다고 해도 과언이 아니다","… гэж хэлэхэд хэтрүүлэг болохгүй"],["~에 불과하다","ердөө … төдий"]]],
+ ["Зайлсхийх үгс",[["너무 → 매우, 지나치게","ярианы үг ✗"],["진짜 → 실제로, 정말로","ярианы үг ✗"],["근데 → 그런데, 그러나","ярианы үг ✗"],["저는 → 나는","54-т «나는»"]]]
+];
+
+/* ================= Topics =================
+   q = 3 асуулт, kw = асуулт бүрийн шалгах үг, tips = асуулт бүрийн тип (монгол), voc = гол үгс */
+const Q=[
+{id:"54-1",type:"solve",title:"도시 개발의 바람직한 방향 (73회 기출)",
+ p:"도시의 낡은 시설이나 공간을 정비하고 개발하는 일이 많다. 하지만 개발이 항상 효율적이고 유용한 것만은 아니며 개발로 인해 지역의 고유한 특징이나 가치가 사라진다는 의견도 있다. 다음 내용을 중심으로 '도시 개발의 바람직한 방향'에 대해 자신의 생각을 쓰라.",
+ q:["도시 개발의 긍정적인 측면은 어떤 것이 있는가?","도시 개발의 부정적인 측면은 어떤 것이 있는가?","도시 개발이 바람직한 방향으로 이루어지려면 어떻게 해야 하는가?"],
+ kw:[["긍정","장점","편리"],["부정","문제","단점"],["방향","바람직","따라서"]],
+ tips:["Эерэг тал: амьдрах орчин сайжирна (аюулгүй, тав тухтай), ажлын байр, эдийн засаг.","Сөрөг тал: үнэ өсөж уугуул оршин суугчид нүүнэ, тухайн газрын өвөрмөц онцлог алга болно.","Шийдэл: оршин суугчдын санал сонсох, хадгалах үнэ цэнэтэй газрыг хамгаалж ашиглах."],
+ voc:[["정비하다","засварлах, цэгцлэх"],["생활 환경이 개선되다","амьдрах орчин сайжрах"],["지역 경제가 활성화되다","орон нутгийн эдийн засаг сэргэх"],["고유한 특징","өвөрмөц онцлог"],["보존하다","хадгалж хамгаалах"]],
+ model:"최근 많은 도시에서 낡은 건물과 도로를 새롭게 정비하는 개발이 활발하게 이루어지고 있다. 도시 개발은 우리 생활을 편리하게 만들지만 그 과정에서 예상하지 못한 문제가 생기기도 한다.\n\n먼저 도시 개발의 긍정적인 측면은 주민들의 생활 환경이 개선된다는 점이다. 오래되어 위험한 건물을 고치고 교통 시설을 늘리면 사람들이 더 안전하고 편리하게 생활할 수 있다. 또한 새로운 상업 시설이 들어서면서 일자리가 생기고 지역 경제가 활성화되기도 한다. 깨끗하게 정비된 공원과 거리는 주민들에게 휴식 공간이 되기도 한다.\n\n그러나 부정적인 측면도 적지 않다. 개발로 인해 집값과 임대료가 오르면 원래 살던 주민들은 지역을 떠날 수밖에 없다. 게다가 오랜 역사를 지닌 골목이나 건물이 사라지면서 그 지역만의 고유한 특징과 가치도 함께 없어진다. 결국 어느 도시나 비슷한 모습이 되어 버리는 것이다. 또한 공사 기간 동안 소음과 먼지로 주민들이 불편을 겪는다.\n\n따라서 도시 개발은 편리함만을 추구하기보다 지역의 가치를 지키는 방향으로 이루어져야 한다. 이를 위해서는 개발 계획을 세울 때 주민들의 의견을 충분히 듣고, 보존할 가치가 있는 공간은 살려서 활용하는 노력이 필요하다. 이렇게 한다면 주민과 도시가 함께 성장하는 바람직한 개발이 가능할 것이다."},
+{id:"54-2",type:"solve",title:"외모지상주의",
+ p:"현대 사회에서 사람들의 외모에 대한 관심이 나날이 높아지고 있다. 외모가 곧 경쟁력인 시대가 되었다고 해도 과언이 아니다. 이에 대한 자신의 생각을 아래의 질문을 중심으로 주장하는 글을 쓰라.",
+ q:["외모가 우리에게 주는 영향은 무엇인가?","지나친 외모지상주의의 부정적인 영향은 무엇인가?","외모지상주의를 극복하기 위해서는 어떻게 해야 하는가?"],
+ kw:[["영향","인상","자신감"],["부정","문제","외모지상주의"],["극복","노력","따라서"]],
+ tips:["Нөлөө: анхны сэтгэгдэл, харилцаа, өөртөө итгэх итгэл.","Сөрөг нөлөө: хэт хоолны дэглэм, гоо сайхны мэс засал, доогуур сэтгэгдэл, гадаад төрхөөр ялгаварлах.","Шийдэл: хувь хүн өөрийн онцлогийг үнэлэх, нийгэм ажилд авахдаа ялгаварлахгүй байх, хэвлэл мэдээлэл олон янзын гоо сайхныг харуулах."],
+ voc:[["첫인상","анхны сэтгэгдэл"],["외모지상주의","гадаад төрхийг дээдлэх үзэл"],["열등감","доогуур сэтгэгдэл"],["차별","ялгаварлал"],["개성","хувь хүний онцлог"]],
+ model:"현대 사회에서 외모에 대한 관심은 날이 갈수록 높아지고 있다. 취업이나 연애에서 외모가 중요한 기준이 되면서 외모를 가꾸는 데 많은 시간과 돈을 쓰는 사람도 늘고 있다. 외모가 곧 경쟁력이라는 말까지 생겨났다.\n\n외모는 우리에게 여러 가지 영향을 준다. 단정하고 깔끔한 외모는 다른 사람에게 좋은 첫인상을 주고 원만한 인간관계를 맺는 데 도움이 된다. 또한 자신의 외모에 만족하는 사람은 자신감이 생겨 일이나 공부에서도 적극적인 태도를 보이기 쉽다.\n\n하지만 외모를 지나치게 중시하는 외모지상주의는 심각한 문제를 낳는다. 무리한 다이어트나 성형 수술로 건강을 해치는 경우가 늘고 있으며, 외모 때문에 열등감을 느끼고 우울해하는 사람도 많다. 더 큰 문제는 사람의 능력이나 인성보다 외모로 사람을 평가하는 차별이 생긴다는 점이다. 이러한 차별은 사회 전체의 불평등으로 이어질 수 있다.\n\n따라서 외모지상주의를 극복하기 위해서는 개인과 사회가 함께 노력해야 한다. 개인은 남의 기준이 아니라 자신만의 개성을 소중히 여기는 태도를 가져야 한다. 사회는 채용 과정에서 외모로 차별하지 않는 제도를 마련하고, 대중매체도 다양한 아름다움을 보여 줄 필요가 있다. 외모보다 사람의 내면을 존중하는 사회가 될 때 우리 모두 더 행복해질 것이다."},
+{id:"54-3",type:"solve",title:"노후 생활의 준비",
+ p:"평균 수명이 늘어나면서 은퇴 후에 보내야 하는 시간도 길어지고 있다. 아래의 내용을 중심으로 '노후 생활의 준비'에 대한 자신의 생각을 쓰라.",
+ q:["노후 생활의 준비를 위해 무엇을 해야 하는가?","노후 생활에서 겪는 가장 큰 문제점은 무엇인가?","그 문제를 해결하는 방법은 무엇인가?"],
+ kw:[["준비"],["문제"],["해결","방법","따라서"]],
+ tips:["Бэлтгэл: эдийн засгийн суурь (тэтгэвэр, хадгаламж), эрүүл мэнд.","Асуудал: санхүүгийн хүндрэл, ганцаардал → сэтгэл гутрал.","Шийдэл: хувь хүн залуугаасаа хуримтлал үүсгэх, хобби, сайн дурын ажил; төр ахмадын ажлын байр, уулзах газар."],
+ voc:[["평균 수명","дундаж наслалт"],["은퇴하다","тэтгэвэрт гарах"],["노후 자금","өндөр насны хуримтлал"],["외로움","ганцаардал"],["봉사 활동","сайн дурын ажил"]],
+ model:"의학 기술이 발달하면서 평균 수명이 크게 늘어났다. 이제는 은퇴한 후에도 20년 이상을 더 살아야 하는 시대가 된 것이다. 따라서 행복한 노후를 위해서는 젊을 때부터 미리 준비하는 자세가 필요하다.\n\n노후 생활을 위해 가장 먼저 준비해야 할 것은 경제적인 기반이다. 일을 그만두면 수입이 줄어들기 때문에 연금이나 저축을 통해 생활비를 마련해 두어야 한다. 또한 꾸준한 운동과 규칙적인 생활로 건강을 지키는 것도 중요하다. 건강을 잃으면 아무리 돈이 많아도 노후를 즐길 수 없기 때문이다.\n\n노후 생활에서 겪는 가장 큰 문제는 경제적 어려움과 외로움이다. 준비 없이 은퇴한 노인들은 생활비가 부족해 어려움을 겪는 경우가 많다. 게다가 자녀들이 독립하고 친구들과도 멀어지면서 대화할 상대가 없어 외로움을 느끼기 쉽다. 이러한 외로움은 우울증과 같은 정신 건강 문제로 이어지기도 한다.\n\n이러한 문제를 해결하기 위해서는 개인과 사회의 노력이 함께 필요하다. 개인은 젊을 때부터 노후 자금을 계획적으로 모으고, 취미나 봉사 활동을 통해 사회와 꾸준히 관계를 맺어야 한다. 국가는 노인 일자리를 늘리고 지역마다 노인들이 모일 수 있는 공간을 마련해야 할 것이다. 이렇게 준비한다면 노후도 인생의 또 다른 즐거운 시간이 될 것이다."},
+{id:"54-4",type:"solve",title:"고령화 시대의 문제",
+ p:"65세 이상의 노인 인구가 급속도로 증가하여 우리 사회는 이미 고령화 시대로 접어들었다. 고령화 시대의 문제를 줄일 수 있는 효과적인 방법에 대해 아래의 내용을 중심으로 주장하는 글을 쓰라.",
+ q:["고령화 시대로 접어들게 되면 어떤 문제가 생길 수 있는가?","고령화의 문제를 줄이려면 국가적·제도적으로 어떤 노력이 필요한가?","행복한 노후를 위해 우리 스스로 준비해야 할 것은 무엇인가?"],
+ kw:[["문제"],["국가","제도","정부"],["스스로","개인","준비"]],
+ tips:["Асуудал: ажиллах хүч хомсдох, эдийн засгийн өсөлт удаашрах, залуу үеийн татварын дарамт, ганцаардсан ахмад.","Төрийн хүчин чармайлт: тэтгэврийн насыг сунгах, ахмадын ажлын байр, тэтгэврийн тогтолцоо, эмнэлэг, асаргааны үйлчилгээ.","Өөрсдөө: хуримтлал, эрүүл мэндээ хамгаалах, тэтгэвэрт гарсны дараа хийх хобби."],
+ voc:[["고령화","хүн амын хөгшрөлт"],["노동력이 부족하다","ажиллах хүч дутах"],["부양하다","тэжээх, асрах"],["정년을 연장하다","тэтгэврийн насыг сунгах"],["돌봄 서비스","асаргааны үйлчилгээ"]],
+ model:"우리 사회는 65세 이상 노인 인구가 빠르게 늘어나면서 이미 고령화 시대에 들어섰다. 고령화는 이제 개인의 문제를 넘어 사회 전체가 함께 해결해야 할 과제가 되었다. 이에 대한 대책을 미리 마련하지 않으면 사회 전체가 큰 어려움을 겪게 될 것이다.\n\n고령화 시대가 되면 여러 가지 문제가 생긴다. 우선 일할 수 있는 젊은 인구가 줄어들어 노동력이 부족해지고 경제 성장이 느려진다. 또한 노인을 부양하기 위한 연금과 의료비가 늘어나면서 젊은 세대의 세금 부담이 커진다. 혼자 사는 노인이 많아지면서 외로움과 빈곤 문제도 심각해지고 있다.\n\n이러한 문제를 줄이기 위해서는 국가적·제도적인 노력이 필요하다. 먼저 정년을 연장하고 노인들이 경험을 살려 일할 수 있는 일자리를 만들어야 한다. 다음으로 연금 제도를 안정적으로 운영하고 노인들이 쉽게 이용할 수 있는 의료 및 돌봄 서비스를 확대해야 한다. 또한 노인들이 안심하고 생활할 수 있도록 주거 환경을 개선하는 것도 필요하다.\n\n물론 국가의 노력만으로는 충분하지 않다. 행복한 노후를 위해서는 우리 스스로도 준비해야 한다. 젊을 때부터 노후 자금을 계획적으로 모으고 건강 관리에 힘써야 한다. 또한 은퇴 후에도 즐길 수 있는 취미를 만들어 두는 것이 좋다. 국가와 개인이 함께 노력한다면 고령화 시대도 충분히 대비할 수 있을 것이다."},
+{id:"54-5",type:"value",title:"나의 직업관",
+ p:"과거에 비해 직업관이 다양해지고 복잡해지면서 직업에 대한 사람들의 인식에도 많은 변화가 생겼다. 자신의 직업관에 대해 아래의 내용을 중심으로 글을 쓰라.",
+ q:["과거에 비해 직업 선택의 기준에는 어떤 변화가 생겼는가?","자신에게 맞는 직업은 어떤 직업이라고 생각하는가?","그 직업을 가지기 위해서는 어떤 능력이나 자질이 필요한가?"],
+ kw:[["과거","변화","기준"],["맞는","직업"],["능력","자질"]],
+ tips:["Өөрчлөлт: өмнө нь тогтвортой, өндөр цалин → одоо сонирхол, авьяас, ажил ба амьдралын тэнцвэр.","Надад тохирох ажил: дуртай, чаддаг, бусдад тустай ажил. Жишээ мэргэжлээ (багш г.м.) нэрлэ.","Чадвар: мэргэжлийн мэдлэг, харилцааны чадвар, тэвчээр. 첫째/둘째/마지막으로."],
+ voc:[["직업관","ажил мэргэжлийн үзэл"],["적성","авьяас, тохирц"],["일과 삶의 균형","ажил амьдралын тэнцвэр"],["자질","чанар, чадвар"],["인내심","тэвчээр"]],
+ model:"사회가 빠르게 변하면서 직업에 대한 사람들의 생각도 많이 달라졌다. 과거에는 안정적이고 수입이 많은 직업이 좋은 직업으로 여겨졌다. 그러나 요즘에는 자신의 적성과 흥미, 그리고 일과 삶의 균형을 중요하게 생각하는 사람이 늘고 있다. 직업을 단순히 돈을 버는 수단이 아니라 자신을 실현하는 방법으로 보는 것이다.\n\n나는 자신에게 맞는 직업이란 자신이 좋아하고 잘할 수 있는 일을 하면서 다른 사람에게도 도움을 줄 수 있는 직업이라고 생각한다. 아무리 돈을 많이 벌어도 하는 일에 흥미가 없다면 오래 일하기 어렵고 만족감도 느낄 수 없기 때문이다. 이러한 이유로 나는 사람들에게 지식을 나누는 교사라는 직업이 나에게 맞는다고 생각한다.\n\n교사가 되기 위해서는 여러 가지 능력과 자질이 필요하다. 첫째, 가르치는 분야에 대한 깊은 지식이 있어야 한다. 둘째, 학생들의 이야기에 귀를 기울이고 이해하는 소통 능력이 필요하다. 마지막으로 학생 한 명 한 명을 존중하고 끝까지 포기하지 않는 인내심을 갖추어야 한다. 이러한 자질은 하루아침에 생기지 않으므로 꾸준히 노력해야 한다.\n\n결론적으로 좋은 직업이란 남이 정해 주는 것이 아니라 스스로 찾는 것이다. 따라서 자신이 원하는 직업을 찾고 그에 필요한 능력을 꾸준히 기르는 노력이 무엇보다 중요하다."},
+{id:"54-6",type:"value",title:"말의 힘",
+ p:"말의 힘은 강하다. 말은 불가능한 것을 가능하게 할 수도 있다. 또한 말은 상처가 될 수도 있고 약이 될 수도 있다. 그래서 말을 할 때는 신중해야 한다. 아래의 내용을 중심으로 '말의 힘'에 대해 자신의 생각을 쓰라.",
+ q:["말이 중요한 이유는 무엇인가?","말의 효과는 구체적으로 어떻게 나타날 수 있는가?","말을 할 때 주의해야 하는 것은 무엇인가?"],
+ kw:[["중요"],["효과","예를 들어","영향"],["주의","신중","조심"]],
+ tips:["Шалтгаан: үг хүнийг харуулдаг, хэлсэн үгийг буцааж авч болохгүй. Зүйр үгээр эхэлж болно: 말 한마디로 천 냥 빚을 갚는다.","Нөлөө: урам өгөх үг зориг өгнө (예를 들어 …), харин шүүмжлэл, хов шарх үлдээнэ.","Анхаарах: хэлэхээсээ өмнө бодох, уурласан үедээ түр хүлээх, үнэн биш яриа тараахгүй."],
+ voc:[["속담","зүйр цэцэн үг"],["격려","урам өгөх"],["상처를 남기다","шарх үлдээх"],["험담","хов жив"],["신중하다","болгоомжтой"]],
+ model:"'말 한마디로 천 냥 빚을 갚는다'라는 속담이 있다. 이처럼 말은 사람의 마음을 움직이고 관계를 바꾸는 큰 힘을 가지고 있다. 그러나 말을 잘못 사용하면 오히려 큰 상처를 줄 수도 있다.\n\n말이 중요한 이유는 말이 곧 그 사람을 보여 주기 때문이다. 우리는 다른 사람이 하는 말을 통해 그 사람의 생각과 인격을 판단한다. 또한 말은 한번 하면 다시 주워 담을 수 없기 때문에 그 영향이 오래 남는다. 같은 내용이라도 어떻게 말하느냐에 따라 상대방이 받아들이는 느낌은 전혀 달라진다.\n\n말의 효과는 긍정적으로도, 부정적으로도 나타날 수 있다. 예를 들어 힘든 시기에 듣는 따뜻한 격려의 말은 다시 일어설 수 있는 용기를 준다. 선생님의 칭찬 한마디가 학생의 꿈을 바꾸기도 한다. 반면 무심코 던진 비난이나 험담은 상대방에게 깊은 상처를 남기고 오랫동안 쌓아 온 관계를 무너뜨릴 수도 있다.\n\n따라서 말을 할 때는 몇 가지를 주의해야 한다. 먼저 말하기 전에 상대방의 입장에서 한 번 더 생각해야 한다. 다음으로 감정이 격해졌을 때는 바로 말하기보다 잠시 마음을 가라앉히는 것이 좋다. 마지막으로 사실이 아닌 이야기를 함부로 전하지 않아야 한다. 우리 모두가 말의 힘을 알고 신중하게 말한다면 서로를 더 존중하는 사회가 될 것이다."},
+{id:"54-7",type:"value",title:"리더의 조건",
+ p:"리더는 구성원들에게 큰 영향을 미친다. 리더의 능력에 따라 일하는 분위기나 팀의 성과가 달라질 수 있기 때문이다. 그래서 리더는 팀을 이끌어 갈 수 있는 능력을 갖춰야 하고 팀을 위해서 어떻게 하는 것이 좋은지 항상 고민해야 한다. 아래의 내용을 중심으로 '리더의 조건'에 대한 자신의 생각을 쓰라.",
+ q:["리더의 역할은 왜 중요한가?","리더가 갖추어야 할 조건은 무엇인가?","리더가 경계해야 할 점은 무엇인가?"],
+ kw:[["역할","중요"],["조건","갖추"],["경계","반면","주의"]],
+ tips:["Ач холбогдол: багийн чиглэлийг тодорхойлдог, зөрчлийг зохицуулдаг.","Нөхцөл: зөв шийдвэр гаргах, харилцааны чадвар, үйлдлээрээ үлгэр жишээ үзүүлэх (첫째/둘째/셋째).","Болгоомжлох: зөвхөн өөрийнхөөрөө байх, амжилтыг өөртөө, бүтэлгүйтлийг бусдад тохох."],
+ voc:[["구성원","гишүүд"],["성과","үр дүн, амжилт"],["방향을 제시하다","чиглэл тодорхойлох"],["모범을 보이다","үлгэр жишээ үзүүлэх"],["신뢰를 잃다","итгэлийг алдах"]],
+ model:"회사나 학교, 작은 모임에 이르기까지 사람이 모이는 곳에는 언제나 리더가 있다. 같은 구성원이라도 어떤 리더를 만나느냐에 따라 팀의 분위기와 결과가 크게 달라진다. 그렇다면 좋은 리더가 되기 위해서는 무엇이 필요할까?\n\n리더의 역할이 중요한 이유는 리더가 팀의 방향을 정하기 때문이다. 리더가 분명한 목표를 제시하면 구성원들은 무엇을 해야 할지 알고 힘을 모을 수 있다. 또한 리더는 갈등이 생겼을 때 이를 조정하여 팀이 흔들리지 않도록 지키는 역할을 한다. 리더가 흔들리면 팀 전체가 흔들리기 마련이다.\n\n좋은 리더가 되기 위해서는 몇 가지 조건을 갖추어야 한다. 첫째, 상황을 정확하게 판단하고 책임 있게 결정하는 능력이 필요하다. 둘째, 구성원들의 의견에 귀를 기울이는 소통 능력이 있어야 한다. 셋째, 말보다 행동으로 먼저 모범을 보이는 자세가 중요하다. 또한 구성원 각자의 능력을 파악하여 알맞은 일을 맡기는 것도 리더의 중요한 능력이다.\n\n반면 리더가 경계해야 할 점도 있다. 자신의 생각만 옳다고 믿고 다른 사람의 의견을 무시하면 구성원들은 점점 마음을 닫게 된다. 또한 성과는 자신의 것으로 돌리고 실패의 책임은 남에게 미루는 태도는 신뢰를 잃게 만든다. 결국 진정한 리더란 높은 자리에 있는 사람이 아니라 구성원과 함께 성장하는 사람이라고 할 수 있다."},
+{id:"54-8",type:"debate",title:"교사의 체벌 (찬반)",
+ p:"학교 내에서 잘못된 행동을 한 학생에 대하여 정신적·육체적 체벌이 교육이라는 명목으로 행해지고 있다. 이에 대한 자신의 입장을 정해 아래의 내용을 중심으로 주장하는 글을 쓰라.",
+ q:["교사의 체벌이 꼭 필요하다고 생각하는가?","그렇게 생각한 이유는 무엇인가?","바람직한 교육의 방향은 무엇이라고 생각하는가?"],
+ kw:[["체벌"],["이유","첫째"],["교육","방향","바람직"]],
+ tips:["Эхлэлдээ байр сууриа тодорхой хэл (Эхлэл ③): 나는 … 반대하는 입장이다.","Шалтгаан 2–3: бие сэтгэлд шарх, айснаасаа зогсох төдий, хүчирхийллийг зөв гэж сурах.","Зөв боловсрол: яриа хэлэлцээ, өөрөө эргэцүүлэх боломж (сайн дурын ажил), сургууль гэр бүлийн хамтын ажил."],
+ voc:[["체벌","бие махбодын шийтгэл"],["찬반 논쟁","дэмжих эсэргүүцэх маргаан"],["자존감","өөрийгөө үнэлэх үнэлэмж"],["반성하다","гэмших, эргэцүүлэх"],["존중","хүндлэл"]],
+ model:"학생이 잘못된 행동을 했을 때 교사가 체벌을 하는 것에 대해서는 오래전부터 찬반 논쟁이 이어져 왔다. 체벌이 학생을 바르게 지도하는 데 필요하다는 의견도 있지만, 나는 교사의 체벌에 반대하는 입장이다.\n\n그렇게 생각하는 이유는 다음과 같다. 첫째, 체벌은 학생의 몸과 마음에 상처를 남긴다. 신체적인 고통뿐만 아니라 친구들 앞에서 혼나는 경험은 학생의 자존감을 크게 떨어뜨린다. 둘째, 체벌은 잘못을 스스로 반성하게 하기보다 두려움 때문에 행동을 멈추게 할 뿐이다. 그래서 교사가 보지 않는 곳에서는 같은 잘못이 반복되기 쉽다. 셋째, 체벌을 경험한 학생은 문제를 폭력으로 해결해도 된다고 잘못 배울 수 있다.\n\n그렇다면 바람직한 교육은 어떤 방향으로 나아가야 할까? 무엇보다 학생이 왜 잘못된 행동을 했는지 대화를 통해 이해하려는 노력이 필요하다. 또한 잘못에 대한 책임은 봉사 활동이나 반성문처럼 스스로 생각할 기회를 주는 방법으로 지도하는 것이 바람직하다. 학교와 가정이 함께 학생을 지도하는 체계도 마련되어야 한다.\n\n결론적으로 나는 교사의 체벌이 필요하지 않다고 생각한다. 교육의 목적은 학생을 벌주는 것이 아니라 바른 사람으로 성장하도록 돕는 것이기 때문이다. 따라서 체벌보다는 존중과 대화를 바탕으로 한 교육이 이루어져야 한다."},
+{id:"54-9",type:"value",title:"시간 관리 (90회 예상)",
+ p:"누구에게나 하루는 24시간으로 똑같이 주어진다. 그러나 시간을 어떻게 사용하느냐에 따라 그 결과는 크게 달라진다. 아래의 내용을 중심으로 '시간 관리'에 대한 자신의 생각을 쓰라.",
+ q:["시간 관리는 왜 중요한가?","시간 관리가 잘 안 되면 어떤 문제점이 발생하는가?","효율적인 시간 관리 방법은 무엇인가?"],
+ kw:[["중요"],["문제"],["방법","먼저","관리하려면"]],
+ tips:["Ач холбогдол: өнгөрсөн цаг буцаж ирэхгүй, цагаа зөв хуваарилбал үр дүн сайжирна.","Асуудал: хойшлуулснаас яарч алдаа гаргах, стресс, гэр бүл найз нөхөдтэй өнгөрөөх цаг багасах.","Арга: хийх ажлын жагсаалт, чухлыг нь эхэлж, утас/SNS-ээс хол, өдрийн төгсгөлд шалгах."],
+ voc:[["미루다","хойшлуулах"],["마감에 쫓기다","хугацаа шахах"],["우선순위","ач холбогдлын дараалал"],["집중을 방해하다","анхаарал сарниулах"],["점검하다","шалгах"]],
+ model:"모든 사람에게 하루는 똑같이 24시간이다. 그런데 어떤 사람은 그 시간 안에 많은 일을 해내고, 어떤 사람은 늘 시간이 부족하다고 말한다. 이러한 차이는 바로 시간 관리에서 나온다.\n\n시간 관리가 중요한 이유는 시간은 한번 지나가면 다시 돌아오지 않기 때문이다. 돈은 잃어도 다시 벌 수 있지만 흘려보낸 시간은 되찾을 수 없다. 또한 시간을 잘 관리하는 사람은 일을 여유 있게 끝낼 수 있어 결과의 질도 높아진다. 같은 24시간이라도 어떻게 쓰느냐에 따라 인생이 달라질 수 있는 것이다.\n\n반대로 시간 관리가 잘 안 되면 여러 가지 문제가 생긴다. 해야 할 일을 계속 미루다 보면 마감에 쫓겨 일을 서둘러 끝내게 되고 실수도 많아진다. 게다가 늘 바쁘다는 느낌 때문에 스트레스가 쌓이고, 가족이나 친구와 보내는 시간까지 줄어들게 된다. 결국 몸과 마음이 모두 지치게 된다.\n\n그렇다면 시간을 효율적으로 관리하려면 어떻게 해야 할까? 먼저 해야 할 일을 목록으로 만들고 중요한 일부터 순서를 정해야 한다. 다음으로 휴대폰이나 SNS처럼 집중을 방해하는 것을 멀리하는 습관이 필요하다. 마지막으로 하루를 마무리할 때 계획을 얼마나 지켰는지 점검하는 것이 좋다. 이처럼 작은 습관부터 실천한다면 누구나 시간의 주인이 될 수 있을 것이다."},
+{id:"54-10",type:"value",title:"건강한 삶 (90회 예상)",
+ p:"건강은 행복한 삶의 기본이다. 아래의 내용을 중심으로 '건강한 삶'에 대한 자신의 생각을 쓰라.",
+ q:["'건강한 사람'이란 어떤 사람을 말하는가?","건강에 좋지 않은 영향을 끼치는 것은 무엇인가?","건강한 삶을 위해 갖추어야 할 자세는 무엇인가?"],
+ kw:[["건강한 사람","이란"],["영향","해치","원인"],["자세","습관","따라서"]],
+ tips:["Тодорхойлолт (Эхлэл ②): зөвхөн өвчингүй биш, бие, сэтгэл, нийгмийн харилцаа тэнцвэртэй хүн.","Муу нөлөө: хоол алгасах, түргэн хоол, хөдөлгөөний дутагдал, стресс.","Зөв хандлага: тогтмол хооллох, өдөрт 30 мин хөдөлгөөн, амралт, хобби."],
+ voc:[["끼니를 거르다","хоол алгасах"],["균형을 이루다","тэнцвэртэй байх"],["스트레스를 풀다","стрессээ тайлах"],["규칙적으로","тогтмол"],["습관을 들이다","зуршилтай болох"]],
+ model:"'건강을 잃으면 모든 것을 잃는다'라는 말이 있다. 아무리 돈이 많고 성공을 해도 건강하지 않으면 삶을 즐길 수 없기 때문이다. 그만큼 건강은 우리 삶에서 가장 중요한 재산이다.\n\n건강한 사람이란 단순히 병이 없는 사람만을 말하는 것이 아니다. 몸이 튼튼할 뿐만 아니라 마음도 안정되어 있고 다른 사람들과 원만한 관계를 맺는 사람이 진정으로 건강한 사람이다. 즉 몸과 마음, 사회생활이 모두 균형을 이룬 상태가 건강이라고 할 수 있다.\n\n그러나 현대인의 생활에는 건강을 해치는 요소가 많다. 바쁜 일상 때문에 끼니를 거르거나 패스트푸드로 식사를 대신하는 경우가 많다. 또한 오랜 시간 앉아서 일하면서도 운동은 거의 하지 않는다. 지나친 경쟁과 업무로 인한 스트레스 역시 몸과 마음을 병들게 하는 원인이다. 게다가 잠들기 전까지 스마트폰을 보는 습관은 수면의 질을 떨어뜨린다.\n\n따라서 건강한 삶을 위해서는 올바른 생활 자세를 갖추어야 한다. 첫째, 규칙적으로 식사하고 균형 잡힌 음식을 먹어야 한다. 둘째, 바쁘더라도 하루에 30분 정도는 걷기나 운동을 하는 습관을 들여야 한다. 셋째, 취미 생활이나 충분한 휴식으로 스트레스를 그때그때 풀어야 한다. 건강은 건강할 때 지켜야 한다는 말처럼 지금부터 작은 습관을 실천하는 것이 중요하다."},
+{id:"54-11",type:"value",title:"목표의 중요성 (90회 예상)",
+ p:"목표는 우리가 나아갈 방향을 알려 준다. 아래의 내용을 중심으로 '목표의 중요성'에 대한 자신의 생각을 쓰라.",
+ q:["목표는 왜 필요한가?","목표 없이 살면 어떻게 되는가?","목표를 달성하기 위해 어떠한 노력이 필요한가?"],
+ kw:[["필요","이유"],["목표 없이","반면","없으면"],["노력","달성"]],
+ tips:["Хэрэгцээ: үйлдлийн чиглэл, сэдэл өгдөг, амжилт бүрээр өөртөө итгэх итгэл.","Зорилгогүй бол: өдрүүдийг утгагүй өнгөрөөх, амархан бууж өгөх, дараа нь харамсах.","Хүчин чармайлт: тодорхой, бодитой зорилго (6 сард TOPIK 4급), жижиг алхамд хуваах, тууштай байх."],
+ voc:[["동기","сэдэл"],["성취감","амжилтын мэдрэмж"],["구체적이다","тодорхой"],["실현 가능하다","хэрэгжих боломжтой"],["끈기","тэвчээр, тууштай"]],
+ model:"사람들은 새해가 되면 저마다 목표를 세운다. 목표는 우리가 어디로 가야 하는지 알려 주는 지도와 같은 역할을 한다. 그렇다면 목표는 왜 필요하며, 어떻게 해야 목표를 이룰 수 있을까?\n\n목표가 필요한 이유는 목표가 행동의 방향과 동기를 주기 때문이다. 분명한 목표가 있는 사람은 무엇을 먼저 해야 할지 알고 시간과 에너지를 효율적으로 사용한다. 또한 목표를 하나씩 이루어 가는 과정에서 성취감과 자신감을 얻을 수 있다.\n\n반면 목표 없이 살면 하루하루를 의미 없이 보내기 쉽다. 해야 할 일이 분명하지 않으니 작은 어려움에도 쉽게 포기하고, 다른 사람의 선택을 그대로 따라가게 된다. 결국 시간이 흐른 뒤에 자신이 무엇을 이루었는지 몰라 후회하게 될 수도 있다. 목표가 없는 삶은 목적지 없이 바다를 떠도는 배와 같다.\n\n목표를 달성하기 위해서는 몇 가지 노력이 필요하다. 먼저 목표는 막연하게 세우기보다 구체적이고 실현 가능하게 세워야 한다. 예를 들어 '한국어를 잘하겠다'보다 '6개월 안에 토픽 4급을 따겠다'처럼 정하는 것이 좋다. 다음으로 큰 목표를 작은 단계로 나누어 매일 조금씩 실천해야 한다. 마지막으로 실패하더라도 포기하지 않고 계획을 고쳐 다시 도전하는 끈기가 필요하다. 이처럼 노력한다면 누구나 원하는 목표에 다가갈 수 있을 것이다."},
+{id:"54-12",type:"solve",title:"층간 소음 해결 방법",
+ p:"아파트 등 공동주택이 많아지면서 층간 소음으로 인한 이웃 간 갈등도 많아졌다. 아래의 내용을 중심으로 '층간 소음 해결 방법'에 대해 자신의 생각을 쓰라.",
+ q:["층간 소음이 생기는 원인은 무엇인가?","층간 소음으로 인한 문제는 어떤 것들이 있는가?","층간 소음 문제를 해결하기 위한 방법은 무엇인가?"],
+ kw:[["원인"],["문제","갈등"],["해결","방법"]],
+ tips:["Шалтгаан 2: барилгын шал нимгэн, хөршөө бодолгүй зуршил (шөнө гүйх, угаалгын машин).","Асуудал: нойр муудах, стресс, хөршийн маргаан → том хэрүүл, гэмт хэрэг.","Шийдэл: төр шалны стандартыг чангатгах, оршин суугчид дэвсгэр, оройн цагт чимээ багасгах, СӨХ, мэргэжлийн байгууллагад хандах."],
+ voc:[["공동주택","орон сууц (олон айлын)"],["층간 소음","давхар хоорондын чимээ"],["이웃 간 갈등","хөршүүдийн зөрчил"],["배려하다","бусдыг бодох"],["기준을 강화하다","стандартыг чангатгах"]],
+ model:"아파트와 같은 공동주택에 사는 사람이 많아지면서 층간 소음 문제가 심각한 사회 문제로 떠오르고 있다. 이웃 사이에 다툼이 생기는 가장 흔한 원인 중 하나가 바로 층간 소음이다.\n\n층간 소음이 생기는 원인은 크게 두 가지로 볼 수 있다. 첫째, 건물 자체의 문제이다. 공사 비용을 줄이기 위해 바닥을 얇게 만들면 작은 소리도 아래층에 그대로 전달된다. 둘째, 생활 습관의 문제이다. 늦은 밤에 뛰어다니거나 세탁기를 돌리는 등 이웃을 배려하지 않는 행동이 소음을 만든다.\n\n층간 소음은 여러 가지 문제를 일으킨다. 계속되는 소음은 잠을 방해하고 스트레스를 높여 건강을 해칠 수 있다. 더 큰 문제는 이웃 간의 갈등이다. 처음에는 작은 불만으로 시작하지만 서로 감정이 쌓이면 큰 싸움이나 심지어 범죄로 이어지기도 한다. 이웃과 얼굴을 마주치는 것조차 불편해지면서 공동체 의식도 약해진다.\n\n따라서 층간 소음 문제를 해결하기 위해서는 제도와 개인의 노력이 함께 필요하다. 정부는 건물을 지을 때 소음을 막을 수 있는 바닥 기준을 강화해야 한다. 또한 주민들은 바닥에 매트를 깔고 늦은 시간에는 소음을 줄이는 등 서로 배려해야 한다. 문제가 생겼을 때는 직접 다투기보다 관리사무소나 전문 기관의 도움을 받는 것이 바람직하다. 서로 조금씩 양보하는 마음이 무엇보다 중요하다."},
+{id:"54-13",type:"value",title:"협업 능력",
+ p:"'협업'이란 다른 사람들과 함께 하나의 목표를 위해 일하는 것을 말한다. 협업을 하다 보면 다른 사람들과 문제가 생겨 일에 지장을 줄 수 있지만 함께 일하는 것으로 긍정적인 결과를 얻을 때도 많다. 협업을 하기 위해서는 협업 능력이 중요하다. 아래의 내용을 중심으로 자신의 생각을 쓰라.",
+ q:["협업 능력이 중요한 이유는 무엇인가?","협업이 쉽지 않은 이유는 무엇인가?","협업을 효율적으로 하기 위해서는 어떻게 행동해야 하는가?"],
+ kw:[["중요"],["쉽지 않","어렵","갈등"],["효율","행동","따라서"]],
+ tips:["Ач холбогдол: өөр өөр чадварыг нийлүүлж том үр дүн, шинэ санаа.","Хэцүү тал: бодол, ажлын арга өөр, үүрэг тодорхойгүй → гомдол, зөрчил.","Яаж: нийтлэг зорилго ба үүргээ тодорхойлох, бусдыг сонсож хүндлэх, явцаа байнга хуваалцах."],
+ voc:[["협업","хамтын ажиллагаа"],["지장을 주다","саад болох"],["완성도","гүйцэтгэлийн чанар"],["역할을 분담하다","үүрэг хуваарилах"],["공유하다","хуваалцах"]],
+ model:"현대 사회에서는 혼자서 모든 일을 해결하기 어렵다. 회사의 프로젝트나 학교의 과제처럼 대부분의 일은 여러 사람이 함께 힘을 모아야 좋은 결과를 얻을 수 있다. 그만큼 함께 일하는 능력이 중요해졌다.\n\n협업 능력이 중요한 이유는 서로 다른 능력을 합쳐 더 큰 성과를 낼 수 있기 때문이다. 사람마다 잘하는 분야가 다르기 때문에 각자의 장점을 살리면 혼자 할 때보다 일을 빠르고 완성도 있게 끝낼 수 있다. 또한 다양한 의견을 나누는 과정에서 새로운 아이디어가 나오기도 한다.\n\n그러나 협업은 생각만큼 쉽지 않다. 사람마다 생각과 일하는 방식이 달라 의견이 부딪치는 경우가 많다. 또한 역할이 분명하지 않으면 일을 적게 하는 사람과 많이 하는 사람이 생겨 불만이 쌓이게 된다. 이런 갈등이 해결되지 않으면 오히려 일에 지장을 주기도 한다. 특히 의견 차이를 감정적으로 받아들이면 관계까지 나빠질 수 있다.\n\n따라서 협업을 효율적으로 하기 위해서는 다음과 같이 행동해야 한다. 먼저 일을 시작하기 전에 공동의 목표와 각자의 역할을 분명하게 정해야 한다. 다음으로 자신의 의견만 고집하기보다 다른 사람의 말을 끝까지 듣고 존중하는 태도가 필요하다. 마지막으로 진행 상황을 자주 공유하여 문제가 생기면 함께 해결해야 한다. 이렇게 서로 배려하며 일한다면 협업은 큰 성과를 가져다줄 것이다."},
+{id:"54-14",type:"value",title:"실패의 긍정적인 면",
+ p:"사람은 태어날 때부터 성공만 한 사람은 없다. 살아가면서 크고 작은 많은 실패를 경험하게 되는데 실패를 통해서 우리는 성공하게 된다. 아래 내용을 중심으로 '실패의 긍정적인 면'에 대한 자신의 생각을 쓰라.",
+ q:["실패의 원인은 무엇인가?","실패의 긍정적인 점은 무엇인가?","실패를 극복하려면 어떻게 해야 하는가?"],
+ kw:[["원인"],["긍정"],["극복"]],
+ tips:["Шалтгаан: бэлтгэл дутуу, хэт өндөр зорилго, гэнэтийн нөхцөл, зөвлөгөө сонсоогүй.","Эерэг тал: өөрийн дутагдлыг мэдэх, бэрхшээлийг даван туулах хүч. Зүйр үг: 실패는 성공의 어머니.","Даван туулах: сургамж гэж хүлээн авах, шалтгааныг эргэн харж дахин төлөвлөх, ойр дотныхноосоо тусламж хүсэх."],
+ voc:[["실패는 성공의 어머니","бүтэлгүйтэл бол амжилтын эх"],["분석하다","задлан шинжлэх"],["견디다","тэвчих"],["극복하다","даван туулах"],["배움의 기회","суралцах боломж"]],
+ model:"누구나 살면서 크고 작은 실패를 경험한다. 시험에 떨어지기도 하고, 원하는 회사에 들어가지 못하기도 한다. 실패는 고통스럽지만 우리를 성장하게 만드는 소중한 경험이 될 수 있다.\n\n실패의 원인은 다양하다. 충분히 준비하지 못했거나 자신의 능력에 비해 무리한 목표를 세웠기 때문일 수 있다. 또한 예상하지 못한 상황이 생기거나 다른 사람의 조언을 듣지 않아 실패하기도 한다. 때로는 운이 따르지 않아 노력한 만큼 결과가 나오지 않을 때도 있다.\n\n그러나 실패에는 긍정적인 면도 있다. 첫째, 실패를 통해 자신의 부족한 점을 정확하게 알 수 있다. 무엇이 잘못되었는지 분석하면 같은 실수를 반복하지 않게 된다. 둘째, 실패를 이겨 내는 과정에서 어려움을 견디는 힘이 길러진다. 실제로 많은 성공한 사람들이 수많은 실패를 겪은 뒤에 꿈을 이루었다. '실패는 성공의 어머니'라는 말도 이러한 의미이다.\n\n그렇다면 실패를 극복하려면 어떻게 해야 할까? 무엇보다 실패를 부끄러워하기보다 배움의 기회로 받아들이는 자세가 필요하다. 그리고 실패의 원인을 차분히 돌아보고 계획을 다시 세워야 한다. 혼자 힘들 때에는 가족이나 친구에게 도움을 청하는 것도 좋은 방법이다. 결국 실패 자체보다 실패를 대하는 태도가 우리의 미래를 결정한다고 할 수 있다."},
+{id:"54-15",type:"value",title:"바람직한 토론 (85회 기출)",
+ p:"토론은 서로 다른 의견을 가진 사람들이 문제를 해결하기 위해 의견을 나누는 과정이다. 아래의 내용을 중심으로 '바람직한 토론'에 대한 자신의 생각을 쓰라.",
+ q:["토론은 어떤 상황에서 필요한가?","토론이 원활하게 이루어지지 않을 경우 발생하는 문제는 무엇인가?","원활한 토론을 위해 필요한 노력은 무엇인가?"],
+ kw:[["필요","상황"],["원활","문제"],["노력"]],
+ tips:["Хэрэгтэй нөхцөл: нэг асуудалд олон санаа зөрөх үед (сургуулийн дүрэм, компанийн төлөвлөгөө), хариуцлагыг нэмэгдүүлнэ.","Асуудал: зөвхөн өөрийн санаагаа тулгавал хэрүүл болно, шийдвэр гарахгүй, цөөн хүний санаа л тусгагдана.","Хүчин чармайлт: бусдыг сонсох, бодит үндэслэлээр ярих, нээлттэй сэтгэлгээ."],
+ voc:[["토론","мэтгэлцээн, хэлэлцүүлэг"],["원활하다","жигд, саадгүй"],["근거","үндэслэл"],["주장을 펼치다","санаагаа илэрхийлэх"],["열린 마음","нээлттэй сэтгэл"]],
+ model:"우리 사회에는 다양한 생각을 가진 사람들이 함께 살아간다. 그래서 어떤 문제를 결정할 때 의견이 서로 다른 경우가 많은데, 이때 필요한 것이 바로 토론이다.\n\n토론은 하나의 문제에 대해 여러 의견이 맞설 때 필요하다. 예를 들어 학교에서 새로운 규칙을 정하거나 회사에서 중요한 계획을 결정할 때 토론을 통해 다양한 의견을 듣고 가장 좋은 방법을 찾을 수 있다. 또한 토론은 구성원 모두가 결정 과정에 참여하게 하여 결과에 대한 책임감을 높여 준다.\n\n그러나 토론이 원활하게 이루어지지 않으면 오히려 문제가 생긴다. 자기 의견만 내세우고 상대방의 말을 듣지 않으면 토론은 말싸움이 되어 버린다. 그 결과 아무것도 결정하지 못하고 서로에 대한 감정만 나빠진다. 또한 목소리가 큰 몇몇 사람의 의견만 반영되면 다른 사람들은 불만을 갖게 된다.\n\n따라서 원활한 토론을 위해서는 몇 가지 노력이 필요하다. 먼저 상대방의 의견을 끝까지 듣고 존중하는 태도를 가져야 한다. 다음으로 감정이 아니라 객관적인 근거를 바탕으로 자신의 주장을 펼쳐야 한다. 마지막으로 나와 다른 의견이라도 합리적이라면 받아들일 수 있는 열린 마음이 필요하다. 이러한 노력이 있을 때 토론은 더 나은 결정을 이끄는 소통의 장이 될 것이다."},
+{id:"54-16",type:"debate",title:"안락사 도입 (찬반)",
+ p:"환자가 질병 등으로 고통받을 때 일정한 절차에 의하여 안락사를 시행하는 국가들이 있다. 사람의 생명을 두고 하는 이 행위에 대해 찬반의 의견이 뜨거운데 안락사 도입에 대한 자신의 입장을 정해 아래의 내용을 중심으로 논리적으로 주장하는 글을 쓰라.",
+ q:["안락사의 긍정적인 측면과 부정적인 측면은 무엇이라고 생각하는가?","안락사의 도입에 대해 어떤 의견을 가지고 있는가?","그렇게 생각한 이유는 무엇인가?"],
+ kw:[["긍정","부정"],["입장","반대","찬성"],["이유","첫째"]],
+ tips:["Эерэг ба сөрөг талыг хоёуланг нь бич: зовлонгоос ангижрах сонголт, гэр бүлийн дарамт ↔ амь насыг үл хүндлэх хандлага.","Байр сууриа тодорхой хэл: 나는 … 반대(찬성)하는 입장이다.","Шалтгаан 2–3-ыг 첫째/둘째/셋째-ээр. Төгсгөлд өөр шийдэл (хосписын эмчилгээ) санал болгож болно."],
+ voc:[["안락사","эвтанази"],["존엄하다","нэр төртэй"],["생명 경시","амь насыг үл хүндлэх"],["사회적 약자","нийгмийн эмзэг бүлэг"],["호스피스","хоспис (тайвшруулах эмчилгээ)"]],
+ model:"의학 기술이 발전했지만 여전히 치료가 불가능한 병으로 고통받는 환자들이 있다. 이런 환자들을 위해 일부 국가에서는 안락사를 허용하고 있는데, 이에 대해서는 찬반 의견이 팽팽하게 맞서고 있다.\n\n안락사에는 긍정적인 측면과 부정적인 측면이 모두 있다. 긍정적인 측면은 견디기 힘든 고통 속에 있는 환자가 존엄하게 생을 마무리할 수 있도록 선택권을 준다는 점이다. 또한 오랜 치료로 인한 가족의 경제적·정신적 부담을 덜어 줄 수 있다. 반면 부정적인 측면은 생명을 인위적으로 끝낸다는 점에서 생명을 가볍게 여기는 풍조를 낳을 수 있다는 것이다.\n\n나는 안락사 도입에 반대하는 입장이다. 그렇게 생각하는 이유는 다음과 같다. 첫째, 생명은 그 무엇과도 바꿀 수 없는 가장 소중한 가치이기 때문이다. 둘째, 환자가 가족에게 부담을 주기 싫어서 원하지 않는 선택을 하게 될 가능성이 있다. 특히 가난한 환자나 노인처럼 사회적 약자가 압박을 받을 수 있다. 셋째, 의학은 계속 발전하고 있으므로 지금은 치료가 어려운 병도 앞으로는 치료될 수 있다.\n\n따라서 안락사를 도입하기보다 환자의 고통을 줄여 주는 호스피스 치료를 확대하고, 환자와 가족을 지원하는 제도를 마련하는 것이 바람직하다. 생명을 지키는 방향으로 사회 전체가 함께 고민해야 할 것이다."}
+];
+
+const TYPEN={solve:"Асуудал · шийдэл",value:"Ач холбогдол · арга",debate:"Санал зөрөлдөөн (찬반)"};
+const STRUCT={
+ solve:"① 서론: асуудлыг танилцуулна → ② 본론: шалтгаан, асуудлыг 첫째/둘째, 게다가-аар → ③ 결론: 따라서 … 아/어야 한다 гэж шийдэл санал болгоно.",
+ value:"① 서론: тодорхойлолт, зүйр үг эсвэл нөхцөл байдал → ② 본론: яагаад чухал, байхгүй бол юу болох (반면) → ③ 결론: яаж хэрэгжүүлэх (먼저 / 다음으로 / 마지막으로).",
+ debate:"① 서론: маргааныг танилцуулаад байр сууриа хэлнэ (나는 … 입장이다) → ② 본론: шалтгаан 2–3 (첫째/둘째/셋째) → ③ 결론: байр сууриа давтаж, өөр шийдэл санал болгоно."
+};
+
+/* ================= Helpers / state ================= */
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const KEY="ssg54";
+let S={};try{S=JSON.parse(localStorage.getItem(KEY)||"{}")||{}}catch(e){S={}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function st(id){return S[id]||(S[id]={a:"",checked:false,self:"",tip:0,at:""})}
+let filter="all",cur=0,DB=null,UID=null,canWrite=null,ROWS=[],pushT=null,chain=Promise.resolve();
+try{const f=localStorage.getItem(KEY+"f");if(f)filter=f;const c=+localStorage.getItem(KEY+"c");if(c>=0&&c<Q.length)cur=c}catch(e){}
+function list(){return Q.filter(q=>filter==="all"||q.type===filter)}
+function clen(t){return t.replace(/\r?\n/g,"").length}
+function paras(t){return t.split(/\r?\n/).map(x=>x.trim()).filter(Boolean)}
+
+/* ================= Templates ================= */
+let tplTab="intro";
+function tplMark(s,cls){return esc(s).replace(cls==="slot"?/\{(.*?)\}/g:/\[(.*?)\]/g,(m,x)=>`<span class="${cls}">${x}</span>`)}
+function renderTpl(){
+  const tabs=$("tplTabs");tabs.innerHTML="";
+  Object.entries(TPL).forEach(([k,g])=>{const b=document.createElement("button");b.className="tab";b.type="button";b.setAttribute("role","tab");b.setAttribute("aria-pressed",String(tplTab===k));b.textContent=`${g.name} (3)`;b.onclick=()=>{tplTab=k;renderTpl()};tabs.appendChild(b)});
+  const box=$("tplCards");box.innerHTML="";
+  TPL[tplTab].items.forEach(it=>{const d=document.createElement("div");d.className="tcard";
+    d.innerHTML=`<div class="th"><span class="tn">${esc(it.n)}</span></div><span class="tu">${esc(it.u)}</span><div class="fr" lang="ko">${tplMark(it.fr,"slot")}</div><span class="mn">${esc(it.mn)}</span><div class="ex" lang="ko">${tplMark(it.ex,"fill")}</div><button class="cbtn" type="button">Загварыг хуулах</button>`;
+    const fr=d.querySelector(".fr");fr.addEventListener("click",()=>{if($("tpl").classList.contains("quiz"))fr.classList.toggle("show")});
+    const cb=d.querySelector(".cbtn");cb.onclick=()=>{const t=it.fr.replace(/\{(.*?)\}/g,"( $1 )");try{navigator.clipboard.writeText(t).then(()=>{cb.textContent="Хуулагдлаа";setTimeout(()=>cb.textContent="Загварыг хуулах",1500)},()=>{})}catch(e){}};
+    box.appendChild(d)});
+  $("tplCombo").innerHTML=COMBO.map(([l,t])=>`<div class="seg"><span class="sl">${esc(l)}</span><span class="st" lang="ko">${esc(t)}</span></div>`).join("");
+}
+$("tplQuiz").onclick=()=>{const on=!$("tpl").classList.contains("quiz");$("tpl").classList.toggle("quiz",on);$("tplQuiz").setAttribute("aria-pressed",String(on));$("tplQuiz").textContent=on?"Цээжлэх горимоос гарах":"Цээжилснээ шалгах";document.querySelectorAll("#tpl .fr.show").forEach(e=>e.classList.remove("show"))};
+function renderBank(){$("bank").innerHTML=BANK.map(([t,items])=>`<div class="bankbox"><h3>${esc(t)}</h3><ul>`+items.map(([k,m])=>`<li><b lang="ko">${esc(k)}</b> <span>— ${esc(m)}</span></li>`).join("")+`</ul></div>`).join("")}
+
+/* ================= Picker & question ================= */
+function renderTabs(){const t=$("tabs");t.innerHTML="";[["all","Бүгд"],["solve",TYPEN.solve],["value",TYPEN.value],["debate",TYPEN.debate]].forEach(([v,l])=>{const b=document.createElement("button");b.className="tab";b.type="button";b.textContent=l;b.setAttribute("aria-pressed",String(filter===v));
+  b.onclick=()=>{filter=v;try{localStorage.setItem(KEY+"f",v)}catch(e){}if(!list().includes(Q[cur]))cur=Q.indexOf(list()[0]);renderAll()};t.appendChild(b)})}
+function status(q){const s=S[q.id];if(!s)return "";if(s.checked)return "ok";if(s.a||s.tip)return "wip";return ""}
+function renderGrid(){const g=$("grid");g.innerHTML="";list().forEach(q=>{const b=document.createElement("button");b.className="qbtn";b.type="button";b.setAttribute("aria-current",String(Q[cur]===q));const s=status(q);
+  b.innerHTML=`<span class="k"><span>${esc(q.id)} · ${esc(TYPEN[q.type])}</span><span class="st ${s==="wip"?"wip":""}">${s==="ok"?"✓":s==="wip"?"•":""}</span></span><span class="t" lang="ko"></span>`;b.querySelector(".t").textContent=q.title;
+  b.onclick=()=>{cur=Q.indexOf(q);renderAll();$("qcard").scrollIntoView({behavior:"smooth",block:"start"})};g.appendChild(b)});
+  $("progress").textContent=`${Q.filter(q=>S[q.id]&&S[q.id].checked).length} / ${Q.length} сэдэв бичсэн`}
+function renderQ(){
+  const q=Q[cur],L=list(),pos=L.indexOf(q),s=st(q.id);
+  $("qtags").innerHTML=`<span class="tag">54</span><span class="tag g">${esc(TYPEN[q.type])}</span>`;
+  $("qpos").textContent=`${pos+1} / ${L.length}`;$("qtitle").textContent=q.id+". "+q.title;
+  $("prompt").innerHTML=`<p lang="ko">${esc(q.p)}</p><ul class="qlist" lang="ko">`+q.q.map(x=>`<li>${esc(x)}</li>`).join("")+`</ul>`;
+  $("ans").value=s.a;meter();renderTips();
+  $("prevBtn").disabled=pos<=0;$("nextBtn").disabled=pos>=L.length-1;
+  if(s.checked)renderFB();else $("fbcard").hidden=true;renderTQ();
+}
+function meter(){const n=clen($("ans").value);const f=$("mfill");f.style.width=Math.min(100,n/700*100)+"%";f.className=n>700?"over":n>=600?"ok":"";
+  $("mcount").textContent=`${n} / 600–700자`+(n>700?" · хэтэрсэн":n>=600?" · тохирсон":"")}
+function renderTips(){const q=Q[cur],s=st(q.id),lv=s.tip||0,tl=$("tipList");tl.innerHTML="";tl.hidden=lv===0;
+  const add=(h,t,ko)=>{const li=document.createElement("li");li.innerHTML="<b></b> <span></span>";li.querySelector("b").textContent=h;const sp=li.querySelector("span");sp.textContent=t;if(ko){sp.className="ko";sp.lang="ko"}tl.appendChild(li)};
+  if(lv>=1){add("Бүтэц:",STRUCT[q.type]);q.tips.forEach((t,i)=>add(`${i+1}-р асуулт:`,t))}
+  if(lv>=2){add("Гол үгс:",q.voc.map(v=>`${v[0]} (${v[1]})`).join(" · "));add("Эхлэх өгүүлбэр:",q.model.split(/(?<=다\.)\s/)[0],true)}
+  const b=$("tipBtn");b.disabled=lv>=2;b.textContent=lv===0?"Тип авах":lv===1?"Гол үг, эхлэх өгүүлбэр авах":"Бүх тип нээгдсэн";
+  $("tipNote").textContent=lv===0?"Эхлээд 5 минут төлөвлөгөөгөө (개요) өөрөө гаргаж үз.":lv===1?"Үг, эхлэх өгүүлбэр хэрэгтэй бол дахин дар.":"Эхлэх өгүүлбэрийг хуулахгүй, өөрийнхөөрөө үргэлжлүүлж бичээрэй."}
+
+/* ================= Automatic checks ================= */
+function autoCheck(q,txt){
+  const out=[],t=txt.trim(),n=clen(t);
+  if(!t){out.push(["bad","Юу ч бичээгүй байна."]);return out}
+  if(n<600)out.push(["bad",`${n} үсэг байна. Хамгийн багадаа 600 үсэг хэрэгтэй (${600-n} дутуу).`]);else if(n>700)out.push(["bad",`${n} үсэг байна. 700-аас хэтрэхгүй.`]);else out.push(["ok",`${n} үсэг · урт тохирсон.`]);
+  if(/(요|(?<!아)니다|니까)[.?!]?(\s|$)/.test(t))out.push(["bad","-요 / -습니다 хэрэглэсэн байна. 54-ийг -다 хэлбэрээр бичнэ."]);
+  if(/(^|\s)(저는|제가|제 생각|저의|저도)/.test(t))out.push(["warn","«저는/제가» биш «나는/내가» гэж бичнэ."]);
+  const coll=t.match(/(너무|진짜|근데|되게|엄청)/g);if(coll)out.push(["warn",`Ярианы үг байна: ${[...new Set(coll)].join(", ")} → 매우, 실제로, 그러나 гэх мэтээр соль.`]);
+  const P=q.p.replace(/\s+/g," ");let copied="";for(let i=0;i+16<=P.length;i+=4){const w=P.slice(i,i+16);if(!/['‘’]/.test(w)&&t.replace(/\s+/g," ").includes(w)){copied=w;break}}
+  if(copied)out.push(["warn",`Асуултын текстийг хуулсан бололтой: «${copied}…». Өөрийн үгээр сольж бич.`]);
+  const ps=paras(t);if(ps.length<3)out.push(["warn",`${ps.length} догол мөр байна. 서론 · 본론 · 결론 гэж дор хаяж 3 догол мөр болго.`]);else out.push(["ok",`${ps.length} догол мөр · бүтэц тохирсон.`]);
+  q.kw.forEach((k,i)=>{if(!k.some(w=>t.includes(w)))out.push(["warn",`${i+1}-р асуултын хариулт дутуу бололтой: «${q.q[i]}»`])});
+  if(!/(첫째|먼저|우선|또한|게다가|뿐만 아니라|다음으로)/.test(t))out.push(["warn","Жагсаах холбоос үг (첫째, 먼저, 또한, 게다가) алга."]);
+  const last=ps[ps.length-1]||"";if(!/(따라서|결론적으로|그러므로|이처럼|결국|요컨대|것이다|바람직하다|필요하다|중요하다)/.test(last))out.push(["warn","Сүүлийн догол мөрөөр дүгнэ (따라서 / 결론적으로 …)."]);
+  return out;
+}
+function check(){
+  if(!$("stuName").value.trim()){const ni=$("stuName");ni.classList.add("err");$("nameNote").textContent="Эхлээд нэрээ бичнэ үү. Тэгвэл багш таны бичсэнийг харж чадна.";ni.scrollIntoView({behavior:"smooth",block:"center"});ni.focus({preventScroll:true});return}
+  const s=st(Q[cur].id);s.a=$("ans").value;s.checked=true;s.at=new Date().toISOString();save();renderFB();renderGrid();renderSend();pushResult();$("fbcard").scrollIntoView({behavior:"smooth",block:"start"})}
+function renderFB(){
+  const q=Q[cur],s=st(q.id);$("fbcard").hidden=false;
+  $("mine").textContent=s.a.trim()||"(хоосон)";
+  $("chk").innerHTML="";autoCheck(q,s.a).forEach(([c,m])=>{const li=document.createElement("li");li.className=c;li.textContent=(c==="ok"?"✓ ":c==="bad"?"✗ ":"! ")+m;$("chk").appendChild(li)});
+  const ps=q.model.split("\n\n");$("modelH").textContent=`Жишээ эссэ · ${clen(q.model)}자`;
+  $("model").innerHTML=ps.map((x,i)=>`<div class="seg"><span class="sl">${i===0?"서론 · эхлэл":i===ps.length-1?"결론 · дүгнэлт":"본론 · гол хэсэг"}</span><span class="st" lang="ko">${esc(x)}</span></div>`).join("");
+  $("uses").innerHTML=q.voc.map(([k,m])=>`<span class="use"><b lang="ko">${esc(k)}</b><span>${esc(m)}</span></span>`).join("");
+  $("selfY").setAttribute("aria-pressed",String(s.self==="y"));$("selfN").setAttribute("aria-pressed",String(s.self==="n"));
+}
+$("selfY").onclick=()=>{const s=st(Q[cur].id);s.self=s.self==="y"?"":"y";save();renderFB();schedulePush()};
+$("selfN").onclick=()=>{const s=st(Q[cur].id);s.self=s.self==="n"?"":"n";save();renderFB();schedulePush();$("ans").focus()};
+$("ans").addEventListener("input",()=>{const s=st(Q[cur].id);s.a=$("ans").value;save();meter();renderGrid()});
+$("tipBtn").onclick=()=>{const s=st(Q[cur].id);s.tip=Math.min(2,(s.tip||0)+1);save();renderTips();renderGrid()};
+$("checkBtn").onclick=check;
+$("clearBtn").onclick=()=>{S[Q[cur].id]={a:"",checked:false,self:"",tip:0,at:""};save();renderAll();$("ans").focus()};
+$("prevBtn").onclick=()=>{const L=list(),i=L.indexOf(Q[cur]);if(i>0){cur=Q.indexOf(L[i-1]);renderAll()}};
+$("nextBtn").onclick=()=>{const L=list(),i=L.indexOf(Q[cur]);if(i<L.length-1){cur=Q.indexOf(L[i+1]);renderAll();$("qcard").scrollIntoView({behavior:"smooth",block:"start"})}};
+function renderAll(){renderTabs();renderGrid();renderQ();try{localStorage.setItem(KEY+"c",String(cur))}catch(e){}}
+
+/* ================= Name & sending ================= */
+try{$("stuName").value=localStorage.getItem(KEY+"name")||""}catch(e){}
+$("stuName").addEventListener("input",e=>{e.target.classList.remove("err");$("nameNote").textContent="Багш таны бичсэнийг харахын тулд нэрээ бичнэ үү.";try{localStorage.setItem(KEY+"name",e.target.value)}catch(_){}renderSend();schedulePush()});
+function doneList(){return Q.filter(q=>S[q.id]&&S[q.id].checked)}
+function renderSend(){const name=$("stuName").value.trim()||"(нэр бичээгүй)",L=doneList();
+  const lines=["[TOPIK 54 бичих бэлтгэл]",`Нэр: ${name}`,`Бичсэн сэдэв: ${L.length} / ${Q.length}`,""];
+  L.forEach(q=>{const s=S[q.id];lines.push(`${q.id} ${q.title} (${clen(s.a.trim())}자${s.tip?`, тип ${s.tip}`:""})`,s.a.trim()||"(хоосон)","")});
+  $("sendText").textContent=L.length?lines.join("\n"):"Одоогоор «Хариулт харах» дарсан сэдэв алга."}
+$("copyBtn").onclick=()=>{const t=$("sendText").textContent;const sel=()=>{const r=document.createRange();r.selectNodeContents($("sendText"));const g=getSelection();g.removeAllRanges();g.addRange(r);$("copyMsg").textContent="Текст сонгогдлоо. Ctrl+C дарж хуулна уу."};
+  try{navigator.clipboard.writeText(t).then(()=>{$("copyMsg").textContent="Хуулагдлаа."},sel)}catch(e){sel()}};
+
+/* ================= Results store (inside Claude only) ================= */
+function compact(){const o={};doneList().forEach(q=>{const s=S[q.id];o[q.id]={a:s.a||"",tip:s.tip||0,self:s.self||"",at:s.at||""}});return o}
+function pushResult(){if(!DB||!UID||canWrite===false)return;const name=$("stuName").value.trim();if(!name||!doneList().length)return;
+  $("sendState").textContent="Хадгалж байна…";
+  chain=chain.then(async()=>{try{await DB.doc("results/"+UID).set({name,updatedAt:new Date().toISOString(),answers:compact()});$("sendState").textContent="Багшид автоматаар хадгалагдлаа ✓";$("sendState").className="note saved"}catch(e){canWrite=false;$("sendState").textContent=""}})}
+function schedulePush(){clearTimeout(pushT);pushT=setTimeout(pushResult,1500)}
+function fmt(iso){const d=new Date(iso);if(isNaN(d))return "";const p=n=>String(n).padStart(2,"0");return `${d.getMonth()+1}/${d.getDate()} ${p(d.getHours())}:${p(d.getMinutes())}`}
+const SELF={y:"✓ Сайн",n:"✎ Дахин"};
+function renderTQ(){if(!DB||$("tqCard").dataset.on!=="1")return;const q=Q[cur],ul=$("tqList");ul.innerHTML="";
+  const rows=ROWS.filter(r=>r.answers&&r.answers[q.id]);$("tqCount").textContent=`${rows.length} шавь`;
+  if(!rows.length){ul.innerHTML='<li><span class="note">Энэ сэдвээр одоогоор хэн ч бичээгүй байна.</span></li>';return}
+  rows.forEach(r=>{const a=r.answers[q.id];const li=document.createElement("li");li.innerHTML='<div class="row between"><span class="nm"></span><span class="note"></span></div><div class="tx" lang="ko"></div>';
+    li.querySelector(".nm").textContent=String(r.name||"—");li.querySelector(".note").textContent=[fmt(a.at),`${clen(String(a.a||""))}자`,a.tip?`тип ${a.tip}`:"",SELF[a.self]||""].filter(Boolean).join(" · ");
+    li.querySelector(".tx").textContent=String(a.a||"").trim()||"(хоосон)";ul.appendChild(li)})}
+function renderTeacher(){const sel=$("tStudent"),prev=sel.value;sel.innerHTML="";
+  ROWS.forEach(r=>{const o=document.createElement("option");o.value=r.id;o.textContent=`${r.name||"—"} · ${Object.keys(r.answers||{}).length} сэдэв · ${fmt(r.updatedAt)}`;sel.appendChild(o)});
+  if(ROWS.some(r=>r.id===prev))sel.value=prev;$("tState").textContent=ROWS.length?`${ROWS.length} шавь`:"Одоогоор бичсэн хүн алга";
+  const tb=$("tBody");tb.innerHTML="";const r=ROWS.find(x=>x.id===sel.value);
+  if(!r){tb.innerHTML='<tr><td colspan="4" class="note">Шавь нар «Хариулт харах» дарахад бичсэн нь энд гарна.</td></tr>';return}
+  Q.filter(q=>r.answers&&r.answers[q.id]).forEach(q=>{const a=r.answers[q.id];const tr=document.createElement("tr");tr.innerHTML="<td></td><td></td><td lang='ko' style='white-space:pre-wrap'></td><td></td>";const c=tr.children;
+    c[0].textContent=q.id;c[1].textContent=clen(String(a.a||""));c[2].textContent=String(a.a||"").trim()||"(хоосон)";c[3].textContent=SELF[a.self]||"–";tb.appendChild(tr)})}
+$("tStudent").addEventListener("change",renderTeacher);
+function startTeacher(){$("teacher").hidden=false;$("tqCard").hidden=false;$("tqCard").dataset.on="1";
+  const timer=setTimeout(()=>{$("tState").textContent="Өгөгдөлд холбогдож чадахгүй байна…"},10000);
+  DB.collection("results").onSnapshot(snap=>{if(!snap.metadata.fromCache)clearTimeout(timer);
+    ROWS=snap.docs.map(d=>Object.assign({id:d.id},d.data())).filter(r=>r&&r.answers).sort((a,b)=>String(b.updatedAt).localeCompare(String(a.updatedAt)));renderTeacher();renderTQ()},
+    ()=>{clearTimeout(timer);$("tState").textContent="Ачаалж чадсангүй."})}
+async function initCaps(){if(!(window.claude&&window.claude.use))return;
+  try{const user=await window.claude.use("user");DB=await window.claude.use("db");if(!DB||!user){DB=null;return}
+    UID=await user.id();canWrite=await user.can("data.write");
+    if((await user.isOwner())||(await user.canEdit()))startTeacher();
+    if(canWrite!==false&&UID)pushResult()}catch(e){DB=null}}
+
+renderTpl();renderBank();if(!list().includes(Q[cur]))cur=Q.indexOf(list()[0]);renderAll();renderSend();initCaps();
+
+})();
+</script>
+
+</body></html>
